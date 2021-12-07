@@ -1,62 +1,66 @@
 .highlight {
-  background: #474949;
-  color: #d1d9e1;
+  color: #000;
+  background: #fff;
 }
 .highlight .code .comment,
 .highlight .code .quote {
-  color: #969896;
-  font-style: italic;
+  color: #af3638;
 }
 .highlight .code .keyword,
 .highlight .code .selector-tag,
-.highlight .code .literal,
-.highlight .code .type,
-.highlight .code .addition {
-  color: #c9c;
-}
-.highlight .code .number,
-.highlight .code .selector-attr,
-.highlight .code .selector-pseudo {
-  color: #f99157;
-}
-.highlight .code .string,
-.highlight .code .doctag,
-.highlight .code .regexp {
-  color: #8abeb7;
-}
-.highlight .code .title,
-.highlight .code .name,
 .highlight .code .section,
-.highlight .code .built_in {
-  color: #b5bd68;
+.highlight .code .title,
+.highlight .code .name {
+  color: #078253;
 }
 .highlight .code .variable,
-.highlight .code .template-variable,
-.highlight .code .selector-id,
-.highlight .code .class .title {
-  color: #fc6;
+.highlight .code .template-variable {
+  color: #c78a00;
 }
-.highlight .code .section,
-.highlight .code .name,
-.highlight .code .strong {
-  font-weight: bold;
+.highlight .code .string,
+.highlight .code .selector-attr,
+.highlight .code .selector-pseudo,
+.highlight .code .regexp {
+  color: #c78a00;
 }
+.highlight .code .literal,
 .highlight .code .symbol,
 .highlight .code .bullet,
-.highlight .code .subst,
 .highlight .code .meta,
+.highlight .code .number,
 .highlight .code .link {
-  color: #f99157;
+  color: #aa759f;
 }
-.highlight .code .deletion {
-  color: #dc322f;
+.highlight .code .title,
+.highlight .code .doctag,
+.highlight .code .type,
+.highlight .code .attr,
+.highlight .code .built_in,
+.highlight .code .builtin-name,
+.highlight .code .params {
+  color: #c78a00;
+}
+.highlight .code .attribute,
+.highlight .code .subst {
+  color: #202020;
 }
 .highlight .code .formula {
-  background: #eee8d5;
+  background-color: #eee;
+  font-style: italic;
 }
-.highlight .code .attr,
-.highlight .code .attribute {
-  color: #81a2be;
+.highlight .code .selector-id,
+.highlight .code .selector-class {
+  color: #9b703f;
+}
+.highlight .code .addition {
+  background-color: #baeeba;
+}
+.highlight .code .deletion {
+  background-color: #ffc8bd;
+}
+.highlight .code .doctag,
+.highlight .code .strong {
+  font-weight: bold;
 }
 .highlight .code .emphasis {
   font-style: italic;

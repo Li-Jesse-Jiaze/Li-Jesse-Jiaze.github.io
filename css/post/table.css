@@ -3,6 +3,7 @@ td,
 th {
   width: 100%;
   text-align: left;
+  line-height: 1.2;
 }
 table {
   border-collapse: collapse;
