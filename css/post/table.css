@@ -1,7 +1,6 @@
 table,
 td,
 th {
-  border: $color-text-primary solid $line-third;
   width: 100%;
   text-align: left;
 }
