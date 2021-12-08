@@ -51,7 +51,21 @@
 
 <script src='https://unpkg.com/valine@1.4.16/dist/Valine.min.js'></script>
 
-
+<script type="text/javascript" src="/js/jquery-1.8.3.min.js"></script>
+<script src="/js/jquery.jscroll.js"></script>
+<style type="text/css">
+  pre { margin: 0; }
+  .centered { width: 380px; margin: 0 auto 0 auto; font-size: 10px; line-height: 10px;}
+  h1 { text-align: center; }
+</style>
+<script type="text/javascript">
+  $(function () {
+    $('#horse').jscroll({
+      padding: 2000,
+      loadingHtml: ''
+    });
+  });
+</script>
 
   <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">

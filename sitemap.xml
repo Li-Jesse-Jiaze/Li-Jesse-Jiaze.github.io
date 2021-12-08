@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://keep-a.live/404.html</loc>
+    
+    <lastmod>2021-12-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://keep-a.live/2021/12/07/Liwenjian-Typora-theme/</loc>
     
     <lastmod>2021-12-08</lastmod>
@@ -65,27 +74,6 @@
 
   
   <url>
-    <loc>http://keep-a.live/tags/painting/</loc>
-    <lastmod>2021-12-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://keep-a.live/tags/van-Gogh/</loc>
-    <lastmod>2021-12-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://keep-a.live/tags/Hello-World/</loc>
-    <lastmod>2021-12-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://keep-a.live/tags/markdown/</loc>
     <lastmod>2021-12-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -114,7 +102,28 @@
   </url>
   
   <url>
+    <loc>http://keep-a.live/tags/painting/</loc>
+    <lastmod>2021-12-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://keep-a.live/tags/Vincent/</loc>
+    <lastmod>2021-12-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://keep-a.live/tags/van-Gogh/</loc>
+    <lastmod>2021-12-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://keep-a.live/tags/Hello-World/</loc>
     <lastmod>2021-12-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
