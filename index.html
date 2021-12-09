@@ -18,7 +18,7 @@
 
 
 
-    <link rel="icon" href="https://s2.loli.net/2021/12/07/RVumAc1b5feCdwz.png">
+    <link rel="icon" href="/bd.ico">
 
 
 
@@ -84,7 +84,7 @@
       <div class="site-brand-container">
         <a href="/">
           
-            <img class="logo-img" src="https://s2.loli.net/2021/12/08/5a2DSiworslPtKW.png" alt="logo_image">
+            <img class="logo-img" src="https://s2.loli.net/2021/12/09/LQ6wlp4gMt28ZsI.png" alt="logo_image">
           
         </a>
       </div>
@@ -135,19 +135,40 @@
     </div>
     <div class="post-content profile-content">
         <div class="profile-title">
-            Keep alive
+            Liwenjian&#39;s blog
         </div>
         <div class="profile-body">
-            Liwenjian&#39;s blog keeps him alive.
+            Liwenjian&#39;s blog keeps him alive. 😌
+            <div id="app"></div>
         </div>
-        
-            <div class="profile-link">
-                <a href="/">Home</a>
-            </div>
-        
+<!--          -->
+<!--             <div class="profile-link"> -->
+<!--                 <a href="/">Home</a> -->
+<!--             </div> -->
+<!--          -->
     </div>
 
 </div>
+<script src="./js/typewriter.js"></script>
+<script>
+    const app = document.getElementById('app');
+
+    const typewriter = new Typewriter(app, {
+        loop: true
+    });
+
+    typewriter.typeString('Welcome to the home page. ')
+        .pauseFor(800)
+//         .deleteAll()
+        .typeString('Here I will share about my life, code and intere')
+//         .pauseFor(800)
+        .deleteChars(6)
+        .typeString('cool things. ')
+        .pauseFor(800)
+//         .deleteAll()
+        .typeString('Have a good time!')
+        .start();
+</script>
 
 <div class="post-list">
     
