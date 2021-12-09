@@ -165,22 +165,37 @@
     <div class="flex-container">
         <div class="footer-text">
             
-            
+            <!-- 
                 Liwenjian |
-            
-            
-                <a target="_blank" rel="noopener" href="https://github.com/Li-wenjian">Github</a>
-            
-                <a target="_blank" rel="noopener" href="https://space.bilibili.com/19037738">Bilibili</a>
-            
-                <a target="_blank" rel="noopener" href="https://steamcommunity.com/id/li_wenjian/">Steam</a>
-            
+             -->
+            <br>liwenjian@keep-alive:~<a id="pathname"></a>$ <a id="btapp";></a>
             
                 <br>Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
             
         </div>
     </div>
 </div>
+
+<script src="/js/typewriter.js"></script>
+<script>
+    var pathname = window.location.pathname;
+    document.getElementById('pathname').innerText = pathname;
+    const btapp = document.getElementById('btapp');
+
+    const bttypewriter = new Typewriter(btapp, {
+        loop: true
+    });
+
+    bttypewriter.typeString('mkdir /cool/code')
+        .pauseFor(800)
+        .deleteChars(4)
+        .typeString('life')
+        .pauseFor(800)
+        .deleteAll()
+        .typeString('have fun')
+        .pauseFor(800)
+        .start();
+</script>
 
     </div>
 
