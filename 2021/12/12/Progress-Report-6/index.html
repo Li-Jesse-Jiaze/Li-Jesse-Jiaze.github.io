@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Li Wenjian">
+
+
+
+
+
+
+
+<title>Progress Report 6 | keep alive</title>
+
+
+
+    <link rel="icon" href="/logo.png">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/frame.js"></script>
+    
+
+
+
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+<script src='https://unpkg.com/valine@1.4.16/dist/Valine.min.js'></script>
+
+<script type="text/javascript" src="/js/jquery-1.8.3.min.js"></script>
+<script src="/js/jquery.jscroll.js"></script>
+<style type="text/css">
+  pre { margin: 0; }
+  .centered { width: 380px; margin: 0 auto 0 auto; font-size: 10px; line-height: 10px;}
+  h1 { text-align: center; }
+</style>
+<script type="text/javascript">
+  $(function () {
+    $('#horse').jscroll({
+      padding: 2000,
+      loadingHtml: ''
+    });
+  });
+</script>
+
+  <!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="keep alive" type="application/atom+xml">
+</head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            <img class="logo-img" src="/cnaidc.png" alt="logo_image">
+            
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li>
+            
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li>
+            
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li>
+            
+          
+            
+              <li class="menu-item">
+                <a href="/about">About</a>
+              </li>
+            
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+                
+                    <span class="post-tag">
+                        <a href="/tags/Notes/">
+                            Notes
+                        </a>
+                    </span>    
+                
+                    <span class="post-tag">
+                        <a href="/tags/SLAM/">
+                            SLAM
+                        </a>
+                    </span>    
+                
+                    <span class="post-tag">
+                        <a href="/tags/%E8%A7%86%E8%A7%89SLAM%E5%8D%81%E5%9B%9B%E8%AE%B2/">
+                            视觉SLAM十四讲
+                        </a>
+                    </span>    
+                
+                    <span class="post-tag">
+                        <a href="/tags/graduation-project/">
+                            graduation project
+                        </a>
+                    </span>    
+                           
+            
+        </div>
+        <div class="post-title">
+            
+            
+                Progress Report 6
+            
+            
+        </div>
+        <span class="post-date">
+            2021, 12, 12
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <blockquote>
+<p>在我的博客中你将会看到三种正经的东西：<a href="/tags/Tutorials">Tutorials</a>、<a href="/tags/Notes">Notes</a>和<a href="/tags/Projects">Projects</a></p>
+<p>Tutorials会写的比较详细。一般是我在写代码中产生的，用于记录一些我会的东西，也可以当作<strong>教学</strong>来看</p>
+<p>Notes是一些学习中的笔记，更多的记录一些我<strong>自己的理解</strong>，希望大家在评论区指正和讨论</p>
+<p>Projects将会<strong>分享一些我做的东西</strong></p>
+</blockquote>
+<h1 id="毕业实训进度报告6">毕业实训进度报告6</h1>
+<h2 id="进展">进展</h2>
+<blockquote>
+<p>第十四周主要完成了对《视觉SLAM十四讲》中第八讲——视觉里程计2的学习。内容主要包括视觉里程计中的<strong>光流法</strong>和<strong>直接法</strong>。</p>
+</blockquote>
+<p>关键点法的主要问题：</p>
+<ul>
+<li>计算特征点的时间长</li>
+<li>忽略了除特征点以外的信息</li>
+<li>在没有明显纹理信息时（如面对一面白墙）效果差</li>
+</ul>
+<h3 id="光流法">光流法</h3>
+<p>计算特征点（仅第一帧）→使用光流追踪特征点→对极几何/PnP/ICP</p>
+<h4 id="lucas-kanada光流稀疏光流的代表">Lucas-Kanada光流（稀疏光流的代表）</h4>
+<p>将图像看成时间的函数： <span class="math inline">\(\boldsymbol{I}(t)\)</span> ， <span class="math inline">\(t\)</span> 时刻，位于 <span class="math inline">\((x,y)\)</span> 点的灰度表示为 <span class="math display">\[
+\boldsymbol{I}(x,y,t)
+\]</span> <strong>灰度不变假设：</strong> 同一空间点的灰度值，在各个图像中是固定不变的。 <span class="math display">\[
+\boldsymbol{I}(x+\mathrm{d} x,y+\mathrm{d}y,t+\mathrm{d}t)=\boldsymbol{I}(x,y,t)
+\]</span></p>
+<p>泰勒展开 <span class="math display">\[
+\boldsymbol{I}(x+\mathrm{d} x,y+\mathrm{d}y,t+\mathrm{d}t)\approx \boldsymbol{I}(x,y,t) + \frac{\partial\boldsymbol{I}} {\partial x}\mathrm{d}x+ \frac{\partial\boldsymbol{I}} {\partial y}\mathrm{d}y+ \frac{\partial\boldsymbol{I}} {\partial t}\mathrm{d}t
+\]</span> 化简得 <span class="math display">\[
+\frac{\partial\boldsymbol{I}} {\partial x}\frac{\mathrm{d}x} {\mathrm{d}t}+ \frac{\partial\boldsymbol{I}} {\partial y}\frac{\mathrm{d}y} {\mathrm{d}t}=-\frac{\partial\boldsymbol{I}} {\partial t}
+\]</span> 💡<strong>这里我的理解是</strong>：灰度的变化是由图像本身的梯度 <span class="math inline">\(\frac{\partial\boldsymbol{I}} {\partial x}\)</span> 和像素的运动 <span class="math inline">\(\frac{\mathrm{d}x} {\mathrm{d}t}\)</span> 线性组合而成的。于是已知灰度的变化和图像的梯度就可以推出像素的运动，从而达到追踪特征点的目的。</p>
+<p>但是像素的运动（在相机的成像中）是二维的，没法只通过一个方程解出来。于是LK光流假设：某一个窗口（特征点周围的一个小范围）内的像素具有相同的运动，这样就有了更多的约束，形成了一个超定方程，用最小二乘求解。</p>
+<p><strong>多层光流：</strong>所拍摄的图像不那么连续的时候，<strong>泰勒展开</strong>就会失效，导致光流追踪的效果很差。所以使用图像金字塔进行多层光流，<strong>由粗至精</strong>的进行求解。</p>
+<h3 id="直接法">直接法</h3>
+<p>同样也假设<strong>灰度不变</strong>，与光流法的区别在于<strong>同时追踪特征点和计算相机的运动</strong>，以确保全局最优。或者说，<strong>直接通过灰度的变化推出相机的运动</strong>。（💡但这一方法需要<strong>深度信息</strong>，这可以通过RGB-D相机直接得到，对单目相机只能通过三角测量得出，这就意味着只能用在初始化完成之后。或者同时把深度也作为优化目标，这就更加复杂了。）</p>
+<p>灰度变化的产生原因：<strong>相机运动 <span class="math inline">\(\boldsymbol T\)</span> →空间点 <span class="math inline">\(P\)</span> 在运动前后分别位于像素坐标的 <span class="math inline">\(p_1,p_2\)</span> → <span class="math inline">\(p_1,p_2\)</span> 产生光度误差 <span class="math inline">\(e\)</span>。</strong>按照这个思路就可以求出<span class="math inline">\(\frac{\partial e} {\partial \boldsymbol{T}}\)</span>（推导详见书上） <span class="math display">\[
+\frac{\partial e} {\partial \boldsymbol{T}} = \frac{\partial \boldsymbol{I}_2} {\partial \boldsymbol{u}} \frac{\partial \boldsymbol{u}} {\partial \boldsymbol{q}}\frac{\partial \boldsymbol{q}} {\partial \delta\boldsymbol{\xi}}\delta\boldsymbol{\xi}
+\]</span> 其中<span class="math inline">\(\frac{\partial \boldsymbol{I}_2} {\partial \boldsymbol{u}}\)</span>为<span class="math inline">\(\boldsymbol{u}\)</span>处图像梯度，<span class="math inline">\(\frac{\partial \boldsymbol{u}} {\partial \boldsymbol{q}}\)</span>为二维点（像素坐标）对三维点（相机坐标）的导数，<span class="math inline">\(\frac{\partial \boldsymbol{q}} {\partial \delta\boldsymbol{\xi}}\)</span>为三维点对运动的导数，<span class="math inline">\(\delta\boldsymbol{\xi}\)</span>为运动的左扰动。反过来说就是，运动引起空间点在相机坐标系运动，引起空间点在像素坐标运动，再结合图像本身的梯度。这三者导致了灰度的变化。</p>
+<p>接下来只需要初始化一个相机运动再进行进行非线性优化就行了。</p>
+<p>举一个例子：假设初始化的运动是<em>原地不动</em>，但是空间点P对应的像素却变亮了。于是就需要模拟出一个运动，使得<strong>更亮的点</strong>对上空间点P。</p>
+<p>这样一想就可以很容易的理解书上直接法的缺点了。</p>
+<h2 id="问题">问题</h2>
+<p>对自动曝光的相机可否先<strong>利用相机的曝光参数对图像进行预处理</strong>，再做以上两种方法，使其更好的满足灰度不变假设呢？</p>
+<h2 id="计划">计划</h2>
+<ol type="1">
+<li>学习《视觉SLAM十四讲》第九章</li>
+<li>继续阅读ORBSLAM代码（&amp;论文，如果有时间）</li>
+</ol>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2021/12/10/ZYZ%20at%20work/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+    
+        <div id="vcomments"></div>
+        <script>
+            var META = ['nick', 'mail', 'link'];
+            var meta = 'nick,mail';
+            meta = meta.split(',').filter(item => {
+                return META.includes(item);
+            });
+            new Valine({
+                el: '#vcomments',
+                appId: 'cKgvUMr2Olh4nFGVLuAYT9qR-gzGzoHsz',
+                appKey: 'O8oYV9aAIm2Sikg4CVAAi1W1',
+                lang: 'en',
+                placeholder: 'Say something',
+                avatar: 'mp',
+                meta: meta
+            })
+        </script>    
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            <!-- 
+                Liwenjian |
+             -->
+            <br>jesse@keep-alive:~<a id="pathname"></a>$ <a id="btapp";></a>
+            
+                <br>Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+            
+        </div>
+    </div>
+</div>
+
+<script src="/js/typewriter.js"></script>
+<script>
+    var pathname = window.location.pathname;
+    document.getElementById('pathname').innerText = pathname;
+    const btapp = document.getElementById('btapp');
+
+    const bttypewriter = new Typewriter(btapp, {
+        loop: true
+    });
+
+    bttypewriter.typeString('mkdir /cool/code')
+        .pauseFor(800)
+        .deleteChars(4)
+        .typeString('life')
+        .pauseFor(800)
+        .deleteAll()
+        .typeString('have fun')
+        .pauseFor(800)
+        .start();
+</script>
+
+    </div>
+
+  </body>
+</html>

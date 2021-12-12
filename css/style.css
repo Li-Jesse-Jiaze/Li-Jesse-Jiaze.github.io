@@ -359,7 +359,8 @@ body {
     float: right;
   }
   .header-inner .site-brand-container {
-    display: table-cell;
+    display: flex;
+    justify-content: center;
     width: 50%;
   }
   .header-inner .site-nav {
