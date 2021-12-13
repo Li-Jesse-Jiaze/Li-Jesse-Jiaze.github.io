@@ -183,9 +183,9 @@
     <p><em>公式渲染的可能会比较慢</em></p>
 <blockquote>
 <p>在我的博客中你将会看到三种正经的东西：<a href="/tags/Tutorials">Tutorials</a>、<a href="/tags/Notes">Notes</a>和<a href="/tags/Projects">Projects</a></p>
-<p>Tutorials会写的比较详细。一般是我在写代码中产生的，用于记录一些我会的东西，也可以当作<strong>教学</strong>来看</p>
-<p>Notes是一些学习中的笔记，更多的记录一些我<strong>自己的理解</strong>，希望大家在评论区指正和讨论</p>
-<p>Projects将会<strong>分享一些我做的东西</strong></p>
+<p><a href="/tags/Tutorials">Tutorials</a>会写的比较详细。一般是我在写代码中产生的，用于记录一些我会的东西，也可以当作<strong>教学</strong>来看</p>
+<p><a href="/tags/Notes">Notes</a>是一些学习中的笔记，更多的记录一些我<strong>自己的理解</strong>，希望大家在评论区指正和讨论</p>
+<p><a href="/tags/Projects">Projects</a>将会<strong>分享一些我做的东西</strong></p>
 </blockquote>
 <h1><span id="毕业实训进度报告6">毕业实训进度报告6</span></h1>
 <h2><span id="进展">进展</span></h2>
@@ -216,7 +216,7 @@
 <p><strong>多层光流：</strong>所拍摄的图像不那么连续的时候，<strong>泰勒展开</strong>就会失效，导致光流追踪的效果很差。所以使用图像金字塔进行多层光流，<strong>由粗至精</strong>的进行求解，具体来说就是使用<strong>上一层计算所得的运动</strong>对下一层的计算进行<strong>初始化</strong>。</p>
 <h3><span id="直接法">直接法</span></h3>
 <p>同样也假设<strong>灰度不变</strong>，与光流法的区别在于<strong>同时追踪特征点和计算相机的运动</strong>，以确保全局最优。或者说，<strong>直接通过灰度的变化推出相机的运动</strong>。（💡但这一方法需要<strong>深度信息</strong>，这可以通过RGB-D相机直接得到，对单目相机只能通过三角测量得出，这就意味着只能用在初始化完成之后。或者同时把深度也作为优化目标，这就更加复杂了。）</p>
-<p>灰度变化的产生原因：<strong>相机运动 <span class="math inline">\(\boldsymbol T\)</span> →空间点 <span class="math inline">\(P\)</span> 在运动前后分别位于像素坐标的 <span class="math inline">\(p_1,p_2\)</span> → <span class="math inline">\(p_1,p_2\)</span> 产生光度误差 <span class="math inline">\(e\)</span>。</strong>按照这个思路就可以求出<span class="math inline">\(\frac{\partial e} {\partial \boldsymbol{T}}\)</span>（推导详见书上） <span class="math display">\[
+<p>灰度变化的产生原因：<strong>相机运动 <span class="math inline">\(\boldsymbol T\)</span>， 导致空间点 <span class="math inline">\(P\)</span> 在像素坐标系中运动 <span class="math inline">\(p_1→p_2\)</span> 。 </strong>而估计的运动<span class="math inline">\(\boldsymbol T\)</span>使得空间点<span class="math inline">\(P\)</span>在像素坐标中运动<span class="math inline">\(p_1→p_2&#39;\)</span>，导致真实的<span class="math inline">\(p_2\)</span>与估计的<span class="math inline">\(p_2&#39;\)</span>灰度<span class="math inline">\(e\)</span>不同，按照这个思路就可以求出<span class="math inline">\(\frac{\partial e} {\partial \boldsymbol{T}}\)</span>（推导详见书上） <span class="math display">\[
 \frac{\partial e} {\partial \boldsymbol{T}} = \frac{\partial \boldsymbol{I}_2} {\partial \boldsymbol{u}} \frac{\partial \boldsymbol{u}} {\partial \boldsymbol{q}}\frac{\partial \boldsymbol{q}} {\partial \delta\boldsymbol{\xi}}\delta\boldsymbol{\xi}
 \]</span> 其中<span class="math inline">\(\frac{\partial \boldsymbol{I}_2} {\partial \boldsymbol{u}}\)</span>为<span class="math inline">\(\boldsymbol{u}\)</span>处图像梯度，<span class="math inline">\(\frac{\partial \boldsymbol{u}} {\partial \boldsymbol{q}}\)</span>为二维点（像素坐标）对三维点（相机坐标）的导数，<span class="math inline">\(\frac{\partial \boldsymbol{q}} {\partial \delta\boldsymbol{\xi}}\)</span>为三维点对运动的导数，<span class="math inline">\(\delta\boldsymbol{\xi}\)</span>为运动的左扰动。反过来说就是，运动引起空间点在相机坐标系运动，引起空间点在像素坐标运动，再结合图像本身的梯度。这三者导致了灰度的变化。</p>
 <p>接下来只需要初始化一个相机运动再进行进行非线性优化就行了。</p>
