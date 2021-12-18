@@ -6,7 +6,7 @@
   <link href="http://keep-a.live/atom.xml" rel="self"/>
   
   <link href="http://keep-a.live/"/>
-  <updated>2021-12-13T03:25:02.933Z</updated>
+  <updated>2021-12-18T14:45:46.725Z</updated>
   <id>http://keep-a.live/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>A bug in FIFA 22</title>
+    <link href="http://keep-a.live/2021/12/18/A-bug-in-FIFA-22/"/>
+    <id>http://keep-a.live/2021/12/18/A-bug-in-FIFA-22/</id>
+    <published>2021-12-18T14:43:24.000Z</published>
+    <updated>2021-12-18T14:45:46.725Z</updated>
+    
+    <content type="html"><![CDATA[<p>Ter Stegen has superpowers!</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Ter Stegen has superpowers!&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="gallery" scheme="http://keep-a.live/categories/gallery/"/>
+    
+    
+    <category term="football" scheme="http://keep-a.live/tags/football/"/>
+    
+    <category term="FIFA22" scheme="http://keep-a.live/tags/FIFA22/"/>
+    
+    <category term="video games" scheme="http://keep-a.live/tags/video-games/"/>
+    
+  </entry>
   
   <entry>
     <title>Progress Report 6</title>
