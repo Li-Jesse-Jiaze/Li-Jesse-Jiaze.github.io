@@ -2,6 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://keep-a.live/README.html</loc>
+    
+    <lastmod>2021-12-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://keep-a.live/gobang.html</loc>
+    
+    <lastmod>2021-12-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://keep-a.live/description.html</loc>
+    
+    <lastmod>2021-12-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://keep-a.live/2021/12/19/Progress-Report-7/</loc>
     
     <lastmod>2021-12-19</lastmod>
@@ -119,27 +146,6 @@
 
   
   <url>
-    <loc>http://keep-a.live/tags/football/</loc>
-    <lastmod>2021-12-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://keep-a.live/tags/FIFA22/</loc>
-    <lastmod>2021-12-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://keep-a.live/tags/video-games/</loc>
-    <lastmod>2021-12-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://keep-a.live/tags/theme/</loc>
     <lastmod>2021-12-19</lastmod>
     <changefreq>weekly</changefreq>
@@ -168,21 +174,21 @@
   </url>
   
   <url>
-    <loc>http://keep-a.live/tags/markdown/</loc>
+    <loc>http://keep-a.live/tags/football/</loc>
     <lastmod>2021-12-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://keep-a.live/tags/Typora/</loc>
+    <loc>http://keep-a.live/tags/FIFA22/</loc>
     <lastmod>2021-12-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://keep-a.live/tags/Projects/</loc>
+    <loc>http://keep-a.live/tags/video-games/</loc>
     <lastmod>2021-12-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -211,6 +217,27 @@
   
   <url>
     <loc>http://keep-a.live/tags/graduation-project/</loc>
+    <lastmod>2021-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://keep-a.live/tags/markdown/</loc>
+    <lastmod>2021-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://keep-a.live/tags/Typora/</loc>
+    <lastmod>2021-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://keep-a.live/tags/Projects/</loc>
     <lastmod>2021-12-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
