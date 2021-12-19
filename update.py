@@ -125,7 +125,7 @@ def update_readme():
 
 
 def restart():
-    data_dir = Path('data')
+    data_dir = Path('/data')
     chessboard_file = data_dir / 'chessboard.txt'
     chessboard = np.zeros((N, N), dtype=np.int32)
     np.savetxt(chessboard_file, chessboard, fmt="%d")
