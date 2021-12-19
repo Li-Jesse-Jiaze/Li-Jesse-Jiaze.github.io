@@ -29,7 +29,7 @@ def parse_issue_name(name):
 
 
 def parse_meta_data(row_id, col_id):
-    data_dir = Path('/data')
+    data_dir = Path('data')
     chessboard_file = data_dir / 'chessboard.txt'
     if chessboard_file.stat().st_size == 0:
         chessboard = np.zeros((N, N), dtype=np.int32)
@@ -125,7 +125,7 @@ def update_readme():
 
 
 def restart():
-    data_dir = Path('/data')
+    data_dir = Path('data')
     chessboard_file = data_dir / 'chessboard.txt'
     chessboard = np.zeros((N, N), dtype=np.int32)
     np.savetxt(chessboard_file, chessboard, fmt="%d")
