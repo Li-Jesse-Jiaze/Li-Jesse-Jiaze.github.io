@@ -286,7 +286,7 @@ e_{21_2} &amp;&amp; e_{22_2} &amp;&amp; ...\\
 <h4><span id="稀疏性和边缘化">稀疏性和边缘化</span></h4>
 <p><span class="math inline">\(\boldsymbol H\)</span>的特殊结构就在于它并不是一个稠密的矩阵，尤其是在特征点对应的雅可比分块中。</p>
 <blockquote>
-<p>其实在粒子滤波器（例如FastSLAM）中也会利用这一点，由于空间点（作为随机变量）的分布与其他特征点的位置是无关的，所以在估计的时候并不会使用很大的EKF，而是对每个空间点单独使用一个EKF进行估计。</p>
+<p>其实在滤波器（例如FastSLAM）中也会利用这一点，由于空间点（作为随机变量）的分布与其他特征点的位置是无关的，所以在估计的时候并不会使用很大的EKF，而是对每个空间点单独使用一个EKF进行估计。</p>
 </blockquote>
 <p>考虑代价函数的其中一个<span class="math inline">\(\boldsymbol e_{ij}\)</span> <span class="math display">\[
 \boldsymbol J_{ij}(x)=(\boldsymbol 0_{2×6},...,\boldsymbol 0_{2×6},\frac {\boldsymbol e_{ij}} {\boldsymbol \xi_{i}},\boldsymbol 0_{2×6},...\boldsymbol 0_{2×3},...,\boldsymbol 0_{2×3},\frac {\boldsymbol e_{ij}} {\boldsymbol p_{j}},\boldsymbol 0_{2×3},...,\boldsymbol 0_{2×3})
