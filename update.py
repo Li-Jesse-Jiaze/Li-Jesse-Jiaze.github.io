@@ -1,6 +1,7 @@
 import sys
 import numpy as np
-from tabulate import tabulate
+# from tabulate import tabulate
+import pandas as pd
 from pathlib import Path
 
 
@@ -14,8 +15,8 @@ WHITE = 1
 BLACK = 2
 
 PLAYERS = {WHITE: 'white', BLACK: 'black'}
-MARKERS = {EMPTY: '` `', WHITE: '`O`', BLACK: '`X`',
-           WHITE + 64: '**`O`**', BLACK + 64: '**`X`**'}
+MARKERS = {EMPTY: '_', WHITE: 'O', BLACK: 'X',
+           WHITE + 64: '**O**', BLACK + 64: '**X**'}
 
 def parse_issue_name(name):
     items = name.split('-')
@@ -86,7 +87,7 @@ def judge(chessboard):
 def update_gobang(winner, player, chessboard):
     player = PLAYERS[player]
 
-    headers = ['{}'.format(i) for i in range(N)]
+    # headers = ['{}'.format(i) for i in range(N)]
 
     table = []
     for i in range(N):
@@ -97,32 +98,34 @@ def update_gobang(winner, player, chessboard):
             content = HYPER_LINK.format(issue_link, marker)
             row.append(content)
         table.append(row)
-
-    table = str(tabulate(table, headers, tablefmt='github'))
-    with open('gobang.md', 'w', encoding='utf-8') as fp:
-        fp.write(f'`O` is white, `X` is black. Simply click the chessboard to put a chess.\n')
+    table = pd.DataFrame(table)
+    table.to_html('gobang.html', render_links=True, escape=False)
+    # table = str(tabulate(table, headers, tablefmt='html'))
+    # # print (table)
+    with open('gobang.html', 'a', encoding='utf-8') as fp:
+        fp.write(f'<div class="post-content">')
+        fp.write(f'<p><code>O</code> is white, <code>X</code> is black. Simply click the chessboard to put a chess.</p>')
         if winner == EMPTY:
-            fp.write(f'You are {player} now\n\n')
+            fp.write(f'<p>You are {player} now</p>')
         else:
             winner = PLAYERS[winner]
             link = ISSUE_LINK.format('restart')
-            fp.write(f'Winner is {winner}! Click [here]({link}) to restart. \n\n')
-        fp.write(table)
+            fp.write(f'<p>Winner is {winner}! Click [here]({link}) to restart.</p>')
+    #     fp.write(table)
 
 
 def update_readme():
-    with open('description.md', 'r', encoding='utf-8') as fp:
+    with open('description.html', 'r', encoding='utf-8') as fp:
         description = fp.read()
-    with open('gobang.md', 'r', encoding='utf-8') as fp:
+    with open('gobang.html', 'r', encoding='utf-8') as fp:
         gobang = fp.read()
-
     readme = description.replace('{gobang}', gobang)
-    with open('README.md', 'w', encoding='utf-8') as fp:
+    with open('README.html', 'w', encoding='utf-8') as fp:
         fp.write(readme)
 
 
 def restart():
-    data_dir = Path('.data')
+    data_dir = Path('data')
     chessboard_file = data_dir / 'chessboard.txt'
     chessboard = np.zeros((N, N), dtype=np.int32)
     np.savetxt(chessboard_file, chessboard, fmt="%d")
