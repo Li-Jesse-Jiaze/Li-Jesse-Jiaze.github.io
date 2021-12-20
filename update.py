@@ -120,7 +120,7 @@ def update_readme():
     with open('gobang.html', 'r', encoding='utf-8') as fp:
         gobang = fp.read()
     readme = description.replace('{gobang}', gobang)
-    with open('README.html', 'w', encoding='utf-8') as fp:
+    with open('playgobang.html', 'w', encoding='utf-8') as fp:
         fp.write(readme)
 
 
