@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Li Wenjian">
+
+
+
+
+
+
+
+<title>Install CUDA in WSL2 | keep alive</title>
+
+
+
+    <link rel="icon" href="/logo.png">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/frame.js"></script>
+    
+
+
+
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+<script src='https://unpkg.com/valine@1.4.16/dist/Valine.min.js'></script>
+
+<script type="text/javascript" src="/js/jquery-1.8.3.min.js"></script>
+<script src="/js/jquery.jscroll.js"></script>
+<style type="text/css">
+  pre { margin: 0; }
+  .centered { width: 380px; margin: 0 auto 0 auto; font-size: 10px; line-height: 10px;}
+  h1 { text-align: center; }
+</style>
+<script type="text/javascript">
+  $(function () {
+    $('#horse').jscroll({
+      padding: 2000,
+      loadingHtml: ''
+    });
+  });
+</script>
+
+  <!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="keep alive" type="application/atom+xml">
+</head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            <img class="logo-img" src="/cnaidc.png" alt="logo_image">
+            
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li>
+            
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li>
+            
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li>
+            
+          
+            
+              <li class="menu-item">
+                <a href="/about">About</a>
+              </li>
+            
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+                
+                    <span class="post-tag">
+                        <a href="/tags/WSL2/">
+                            WSL2
+                        </a>
+                    </span>    
+                
+                    <span class="post-tag">
+                        <a href="/tags/CUDA/">
+                            CUDA
+                        </a>
+                    </span>    
+                
+                    <span class="post-tag">
+                        <a href="/tags/Tutorials/">
+                            Tutorials
+                        </a>
+                    </span>    
+                
+                    <span class="post-tag">
+                        <a href="/tags/Windows/">
+                            Windows
+                        </a>
+                    </span>    
+                           
+            
+        </div>
+        <div class="post-title">
+            
+            
+                Install CUDA in WSL2
+            
+            
+        </div>
+        <span class="post-date">
+            2021, 12, 22
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2><span id="系统要求">系统要求</span></h2>
+<ul>
+<li><p>需要 <a target="_blank" rel="noopener" href="https://microsoft.com/software-download/windows11">Windows 11</a> or <a target="_blank" rel="noopener" href="https://microsoft.com/software-download/windows10">Windows 10, version 21H2</a>。虽然官方说的要求是windows版本在<code>20145</code>及以上，但还是最好去设置里加入<strong>Windows预览体验计划</strong>。在Windows命令行中运行<code>winver</code>可以查看内部版本号</p></li>
+<li><p>WSL内核版本在4.19.121及以上，在wsl命令行中运行<code>uname -r</code>查看版本，如果版本过低在Windows命令行中运行 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl --update</span><br></pre></td></tr></table></figure></p></li>
+<li><p>一张GeForce/Quadro显卡</p></li>
+</ul>
+<h2><span id="在pc上安装cuda驱动程序">在PC上安装CUDA驱动程序</span></h2>
+<p>🌟下载并安装 <a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda/wsl">NVIDIA CUDA-enabled driver for WSL</a>。</p>
+<h2><span id="安装ubuntu">安装Ubuntu</span></h2>
+<p>在Windows的应用商店里安装Ubuntu，这个绝大多数教程都有，去找个别的教程看看就行</p>
+<h2><span id="安装cuda">安装CUDA</span></h2>
+<p>我写了一个脚本，你可以直接它来安装CUDA</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget http://keep-a.live/wsl_install_cuda.sh</span><br><span class="line">source ./wsl_install_cuda.sh</span><br></pre></td></tr></table></figure>
+<p>这个过程会比较慢，尤其是下载<code>cuda-toolkit</code>的时候，如果你想用代理的话可以试试proxychains4，详见这篇<a href="/2021/12/22/WSL2-use-proxy-of-Windows/">blog</a>。</p>
+<p>当然你也可以自己按照脚本中的内容手动安装</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># wsl_install_cuda.sh</span></span><br><span class="line"><span class="comment"># DISTRO变量是NVIDIA CUDA资源库名称的一部分，被设置为你所使用的发行版名称；</span></span><br><span class="line"><span class="comment"># 我们将使用 &quot;wsl-ubuntu &quot;来表示WSL上的CUDA。 APT_INSTALL变量指定了要安装的软件包的名称；</span></span><br><span class="line"><span class="comment"># 你可以从wsl-ubuntu资源库中安装cuda软件包来获得最新版本的CUDA工具包。</span></span><br><span class="line"><span class="built_in">export</span> DISTRO=wsl-ubuntu</span><br><span class="line"><span class="built_in">export</span> APT_INSTALL=cuda</span><br><span class="line"><span class="comment"># export DISTRO=ubuntu2004</span></span><br><span class="line"><span class="comment"># export APT_INSTALL=cuda-toolkit-11-4</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在apt-key中添加CUDA</span></span><br><span class="line">sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/<span class="variable">$&#123;DISTRO&#125;</span>/x86_64/7fa2af80.pub</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;deb http://developer.download.nvidia.com/compute/cuda/repos/<span class="variable">$&#123;DISTRO&#125;</span>/x86_64 /&quot;</span> | sudo tee /etc/apt/sources.list.d/cuda.list</span><br><span class="line">wget https://developer.download.nvidia.com/compute/cuda/repos/<span class="variable">$&#123;DISTRO&#125;</span>/x86_64/cuda-<span class="variable">$&#123;DISTRO&#125;</span>.pin</span><br><span class="line">sudo mv cuda-<span class="variable">$&#123;DISTRO&#125;</span>.pin /etc/apt/preferences.d/cuda-repository-pin-600</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装CUDA Toolkit</span></span><br><span class="line">sudo apt update &amp;&amp; sudo apt -y upgrade</span><br><span class="line">sudo apt install -y <span class="variable">$&#123;APT_INSTALL&#125;</span></span><br><span class="line"><span class="comment"># sudo proxychains4 apt update &amp;&amp; sudo apt -y upgrade</span></span><br><span class="line"><span class="comment"># sudo proxychains4 apt install -y $&#123;APT_INSTALL&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置环境变量</span></span><br><span class="line">cat &lt;&lt; <span class="string">&#x27;EOS&#x27;</span> &gt;&gt; ~/.profile</span><br><span class="line"></span><br><span class="line"><span class="comment">#Ref: https://astherier.com/blog/2021/07/windows11-cuda-on-wsl2-setup/</span></span><br><span class="line"><span class="built_in">export</span> PATH=/usr/<span class="built_in">local</span>/cuda-11.4/bin<span class="variable">$&#123;PATH:+:<span class="variable">$&#123;PATH&#125;</span>&#125;</span></span><br><span class="line"></span><br><span class="line">EOS</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装第三方库（可选）</span></span><br><span class="line">sudo apt install -y g++ freeglut3-dev build-essential libx11-dev libxmu-dev libxi-dev libglu1-mesa libglu1-mesa-dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># build建立一些样本程序来检查CUDA工具包的运行情况</span></span><br><span class="line"><span class="comment"># 存放在/usr/local/cuda/samples/下</span></span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/cuda/samples/1_Utilities/deviceQuery/</span><br><span class="line">sudo make</span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/cuda/samples/1_Utilities/bandwidthTest/</span><br><span class="line">sudo make</span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/cuda/samples/7_CUDALibraries/simpleCUBLAS/</span><br><span class="line">sudo make</span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/cuda/samples/7_CUDALibraries/simpleCUFFT/</span><br><span class="line">sudo make</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/cuda/samples/bin/x86_64/linux/release/</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">你已经完成了在WSL上配置CUDA的工作。</span></span><br><span class="line"><span class="string">请检查它们是否正常工作，例如：</span></span><br><span class="line"><span class="string">$ cd /usr/local/cuda/samples/bin/x86_64/linux/release/</span></span><br><span class="line"><span class="string">$ ./deviceQuery</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;</span></span><br></pre></td></tr></table></figure>
+<h2><span id="验证安装">验证安装</span></h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/cuda/samples/bin/x86_64/linux/release/</span><br></pre></td></tr></table></figure>
+<p>然后运行，结果如下说明已经正常安装好了CUDA</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ./deviceQuery</span></span><br><span class="line">./deviceQuery Starting...</span><br><span class="line"></span><br><span class="line"> CUDA Device Query (Runtime API) version (CUDART static linking)</span><br><span class="line"></span><br><span class="line">Detected 1 CUDA Capable device(s)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2021/12/22/WSL2-use-proxy-of-Windows/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2021/12/19/Progress-Report-7/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+    
+        <div id="vcomments"></div>
+        <script>
+            var META = ['nick', 'mail', 'link'];
+            var meta = 'nick,mail';
+            meta = meta.split(',').filter(item => {
+                return META.includes(item);
+            });
+            new Valine({
+                el: '#vcomments',
+                appId: 'cKgvUMr2Olh4nFGVLuAYT9qR-gzGzoHsz',
+                appKey: 'O8oYV9aAIm2Sikg4CVAAi1W1',
+                lang: 'en',
+                placeholder: 'Say something',
+                avatar: 'mp',
+                meta: meta
+            })
+        </script>    
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            <!-- 
+                Liwenjian |
+             -->
+            <br>jesse@keep-alive:~<a id="pathname"></a>$ <a id="btapp";></a>
+            
+                <br>Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+            
+        </div>
+    </div>
+</div>
+
+<script src="/js/typewriter.js"></script>
+<script>
+    var pathname = window.location.pathname;
+    document.getElementById('pathname').innerText = pathname;
+    const btapp = document.getElementById('btapp');
+
+    const bttypewriter = new Typewriter(btapp, {
+        loop: true
+    });
+
+    bttypewriter.typeString('mkdir /cool/code')
+        .pauseFor(800)
+        .deleteChars(4)
+        .typeString('life')
+        .pauseFor(800)
+        .deleteAll()
+        .typeString('have fun')
+        .pauseFor(800)
+        .start();
+</script>
+
+    </div>
+
+  </body>
+</html>
