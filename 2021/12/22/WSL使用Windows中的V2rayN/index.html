@@ -14,7 +14,7 @@
 
 
 
-<title>WSL2 use proxy of Windows | keep alive</title>
+<title>WSL使用Windows中的V2rayN | keep alive</title>
 
 
 
@@ -165,7 +165,7 @@
         <div class="post-title">
             
             
-                WSL2 use proxy of Windows
+                WSL使用Windows中的V2rayN
             
             
         </div>
@@ -181,22 +181,21 @@
 </div>
     <div class="post-content">
     <p><a href="/2021/12/22/WSL使用Windows中的V2rayN/">中文</a>｜<a href="/2021/12/22/WSL2-use-proxy-of-Windows/">English</a></p>
-<p>Install <code>proxychains4</code></p>
+<p>安装<code>proxychains4</code></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install proxychains4</span><br></pre></td></tr></table></figure>
-<p>To configure <code>proxychains4</code> in a normal Ubuntu or <strong>WSL1</strong>, you just need to modify <code>/etc/proxychains4.conf</code>.</p>
-<p>Here's how to do it</p>
+<p>在普通的Ubuntu/<strong>WSL1</strong>中要配置<code>proxychains4</code>只需要修改一下<code>/etc/proxychains4.conf</code>就行。具体做法是</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/proxychains4.conf</span><br></pre></td></tr></table></figure>
-<p>Go to the bottom line and change the port according to the format it is written in. Make it match the proxy port you are using.</p>
-<p>But in <strong>WSL2</strong>, the address of the subsystem and the host are not the same, which means you can't use 127.0.0.1 directly anymore.</p>
-<p>You can check the IP address of the host with the following command</p>
+<p>到最下面一行按照它写好的格式修改端口为你所用代理的端口。</p>
+<p>但是在<strong>WSL2</strong>中，子系统和主机的地址并不一样，也就是说不能直接用127.0.0.1了。</p>
+<p>你可以使用以下命令查看主机的IP</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/resolv.conf | grep nameserver | awk &#x27;&#123; print $2 &#125;&#x27;</span><br></pre></td></tr></table></figure>
-<p>So just add the following two lines to <code>~/.zshrc</code> or <code>~/.bashrc</code></p>
+<p>所以只需要在<code>~/.zshrc</code>或者<code>～/.bashrc</code>中加上以下两行</p>
+<p>⚠️用的是v2rayN所以是<code>10808</code>端口，请根据你用的代理自行调整一下</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hostip=$(cat /etc/resolv.conf | grep nameserver | awk &#x27;&#123; print $2 &#125;&#x27;)</span><br><span class="line">sudo sed -i &quot;$ c socks5 $&#123;hostip&#125; 10808&quot; /etc/proxychains4.conf</span><br></pre></td></tr></table></figure>
-<p>⚠️ I use v2rayN so it is <code>10808</code> port, please adjust it according to the proxy you use.</p>
-<p>This automatically changes the last line of <code>/etc/proxychains4.conf</code> each time the command line is opened.</p>
-<p>After that you can go proxy by adding <code>proxychains4</code> in front of the command.</p>
+<p>在每次开命令行的时候自动更改<code>/etc/proxychains4.conf</code>的最后一行</p>
+<p>之后你就可以通过在命令前添加proxychains4来走代理了</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 curl myip.ipip.net</span><br><span class="line">当前 IP：XXX.XXX.XX.XXX  来自于：荷兰 北荷兰省 阿姆斯特丹  it7.net</span><br></pre></td></tr></table></figure>
-<p>By the way <code>proxychains4</code> should be written after <code>sudo</code>.</p>
+<p>另外proxychains4要写在sudo后面</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo proxychains4 apt-get update</span><br></pre></td></tr></table></figure>
 
 </div> 
@@ -209,12 +208,17 @@
     <nav class="post-nav">
         <div class="prev-item">
            
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2021/12/22/WSL2-use-proxy-of-Windows/">Prev</a>
+                </div>
+            
         </div>
         <div class="next-item">
             
                 <div class="icon arrow-right"></div>
                 <div class="post-link">
-                  <a href="/2021/12/22/WSL%E4%BD%BF%E7%94%A8Windows%E4%B8%AD%E7%9A%84V2rayN/">Next</a>  
+                  <a href="/2021/12/22/Install-CUDA/">Next</a>  
                 </div>  
             
         </div>
