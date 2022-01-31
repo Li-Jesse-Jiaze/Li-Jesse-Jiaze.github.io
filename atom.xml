@@ -6,7 +6,7 @@
   <link href="http://keep-a.live/atom.xml" rel="self"/>
   
   <link href="http://keep-a.live/"/>
-  <updated>2021-12-24T10:01:27.979Z</updated>
+  <updated>2022-01-31T12:43:38.801Z</updated>
   <id>http://keep-a.live/</id>
   
   <author>
@@ -17,31 +17,25 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>WSL2 use proxy of Windows</title>
-    <link href="http://keep-a.live/2021/12/22/WSL2-use-proxy-of-Windows/"/>
-    <id>http://keep-a.live/2021/12/22/WSL2-use-proxy-of-Windows/</id>
-    <published>2021-12-22T07:54:45.000Z</published>
-    <updated>2021-12-24T10:01:27.979Z</updated>
+    <title>Happy Lunar New Year (Tiger)</title>
+    <link href="http://keep-a.live/2022/01/31/Happy-Lunar-New-Year-Tiger/"/>
+    <id>http://keep-a.live/2022/01/31/Happy-Lunar-New-Year-Tiger/</id>
+    <published>2022-01-31T11:32:32.000Z</published>
+    <updated>2022-01-31T12:43:38.801Z</updated>
     
-    <content type="html"><![CDATA[<p><a href="/2021/12/22/WSL使用Windows中的V2rayN/">中文</a>｜<a href="/2021/12/22/WSL2-use-proxy-of-Windows/">English</a></p><p>Install <code>proxychains4</code></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install proxychains4</span><br></pre></td></tr></table></figure><p>To configure <code>proxychains4</code> in a normal Ubuntu or <strong>WSL1</strong>, you just need to modify <code>/etc/proxychains4.conf</code>.</p><p>Here's how to do it</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/proxychains4.conf</span><br></pre></td></tr></table></figure><p>Go to the bottom line and change the port according to the format it is written in. Make it match the proxy port you are using.</p><p>But in <strong>WSL2</strong>, the address of the subsystem and the host are not the same, which means you can't use 127.0.0.1 directly anymore.</p><p>You can check the IP address of the host with the following command</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/resolv.conf | grep nameserver | awk &#x27;&#123; print $2 &#125;&#x27;</span><br></pre></td></tr></table></figure><p>So just add the following two lines to <code>~/.zshrc</code> or <code>~/.bashrc</code></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hostip=$(cat /etc/resolv.conf | grep nameserver | awk &#x27;&#123; print $2 &#125;&#x27;)</span><br><span class="line">sudo sed -i &quot;$ c socks5 $&#123;hostip&#125; 10808&quot; /etc/proxychains4.conf</span><br></pre></td></tr></table></figure><p>⚠️ I use v2rayN so it is <code>10808</code> port, please adjust it according to the proxy you use.</p><p>This automatically changes the last line of <code>/etc/proxychains4.conf</code> each time the command line is opened.</p><p>After that you can go proxy by adding <code>proxychains4</code> in front of the command.</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 curl myip.ipip.net</span><br><span class="line">当前 IP：XXX.XXX.XX.XXX  来自于：荷兰 北荷兰省 阿姆斯特丹  it7.net</span><br></pre></td></tr></table></figure><p>By the way <code>proxychains4</code> should be written after <code>sudo</code>.</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo proxychains4 apt-get update</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<p>check <a href="/tiger.html">this</a></p>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;/2021/12/22/WSL使用Windows中的V2rayN/&quot;&gt;中文&lt;/a&gt;｜&lt;a href=&quot;/2021/12/22/WSL2-use-proxy-of-Windows/&quot;&gt;English&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Install &lt;code&gt;prox</summary>
+    <summary type="html">&lt;p&gt;check &lt;a href=&quot;/tiger.html&quot;&gt;this&lt;/a&gt;&lt;/p&gt;
+</summary>
       
     
     
     
     
-    <category term="WSL2" scheme="http://keep-a.live/tags/WSL2/"/>
-    
-    <category term="Tutorials" scheme="http://keep-a.live/tags/Tutorials/"/>
-    
-    <category term="Windows" scheme="http://keep-a.live/tags/Windows/"/>
-    
-    <category term="proxy" scheme="http://keep-a.live/tags/proxy/"/>
+    <category term="life" scheme="http://keep-a.live/tags/life/"/>
     
   </entry>
   
@@ -59,6 +53,35 @@
       
     <summary type="html">&lt;p&gt;&lt;a href=&quot;/2021/12/22/WSL使用Windows中的V2rayN/&quot;&gt;中文&lt;/a&gt;｜&lt;a href=&quot;/2021/12/22/WSL2-use-proxy-of-Windows/&quot;&gt;English&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;安装&lt;code&gt;proxychain</summary>
+      
+    
+    
+    
+    
+    <category term="WSL2" scheme="http://keep-a.live/tags/WSL2/"/>
+    
+    <category term="Tutorials" scheme="http://keep-a.live/tags/Tutorials/"/>
+    
+    <category term="Windows" scheme="http://keep-a.live/tags/Windows/"/>
+    
+    <category term="proxy" scheme="http://keep-a.live/tags/proxy/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>WSL2 use proxy of Windows</title>
+    <link href="http://keep-a.live/2021/12/22/WSL2-use-proxy-of-Windows/"/>
+    <id>http://keep-a.live/2021/12/22/WSL2-use-proxy-of-Windows/</id>
+    <published>2021-12-22T07:54:45.000Z</published>
+    <updated>2021-12-24T10:01:27.979Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="/2021/12/22/WSL使用Windows中的V2rayN/">中文</a>｜<a href="/2021/12/22/WSL2-use-proxy-of-Windows/">English</a></p><p>Install <code>proxychains4</code></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install proxychains4</span><br></pre></td></tr></table></figure><p>To configure <code>proxychains4</code> in a normal Ubuntu or <strong>WSL1</strong>, you just need to modify <code>/etc/proxychains4.conf</code>.</p><p>Here's how to do it</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/proxychains4.conf</span><br></pre></td></tr></table></figure><p>Go to the bottom line and change the port according to the format it is written in. Make it match the proxy port you are using.</p><p>But in <strong>WSL2</strong>, the address of the subsystem and the host are not the same, which means you can't use 127.0.0.1 directly anymore.</p><p>You can check the IP address of the host with the following command</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/resolv.conf | grep nameserver | awk &#x27;&#123; print $2 &#125;&#x27;</span><br></pre></td></tr></table></figure><p>So just add the following two lines to <code>~/.zshrc</code> or <code>~/.bashrc</code></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hostip=$(cat /etc/resolv.conf | grep nameserver | awk &#x27;&#123; print $2 &#125;&#x27;)</span><br><span class="line">sudo sed -i &quot;$ c socks5 $&#123;hostip&#125; 10808&quot; /etc/proxychains4.conf</span><br></pre></td></tr></table></figure><p>⚠️ I use v2rayN so it is <code>10808</code> port, please adjust it according to the proxy you use.</p><p>This automatically changes the last line of <code>/etc/proxychains4.conf</code> each time the command line is opened.</p><p>After that you can go proxy by adding <code>proxychains4</code> in front of the command.</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 curl myip.ipip.net</span><br><span class="line">当前 IP：XXX.XXX.XX.XXX  来自于：荷兰 北荷兰省 阿姆斯特丹  it7.net</span><br></pre></td></tr></table></figure><p>By the way <code>proxychains4</code> should be written after <code>sudo</code>.</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo proxychains4 apt-get update</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;/2021/12/22/WSL使用Windows中的V2rayN/&quot;&gt;中文&lt;/a&gt;｜&lt;a href=&quot;/2021/12/22/WSL2-use-proxy-of-Windows/&quot;&gt;English&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Install &lt;code&gt;prox</summary>
       
     
     
@@ -220,9 +243,9 @@
     <category term="gallery" scheme="http://keep-a.live/categories/gallery/"/>
     
     
-    <category term="zyz" scheme="http://keep-a.live/tags/zyz/"/>
-    
     <category term="life" scheme="http://keep-a.live/tags/life/"/>
+    
+    <category term="zyz" scheme="http://keep-a.live/tags/zyz/"/>
     
     <category term="photography" scheme="http://keep-a.live/tags/photography/"/>
     
