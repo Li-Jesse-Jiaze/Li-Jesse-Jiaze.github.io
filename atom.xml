@@ -6,7 +6,7 @@
   <link href="http://keep-a.live/atom.xml" rel="self"/>
   
   <link href="http://keep-a.live/"/>
-  <updated>2022-02-15T09:58:48.354Z</updated>
+  <updated>2022-02-15T11:12:13.953Z</updated>
   <id>http://keep-a.live/</id>
   
   <author>
@@ -17,13 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Crane —— A painting I recently liked</title>
+    <link href="http://keep-a.live/2022/02/15/Crane-%E2%80%94-A-painting-I-recently-liked/"/>
+    <id>http://keep-a.live/2022/02/15/Crane-%E2%80%94-A-painting-I-recently-liked/</id>
+    <published>2022-02-15T10:03:42.000Z</published>
+    <updated>2022-02-15T11:12:13.953Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>Crane</strong> by <a href="https://soposters.com/shop/tiangan/crane/">Tian Gan</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;strong&gt;Crane&lt;/strong&gt; by &lt;a href=&quot;https://soposters.com/shop/tiangan/crane/&quot;&gt;Tian Gan&lt;/a&gt;&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="gallery" scheme="http://keep-a.live/categories/gallery/"/>
+    
+    
+    <category term="painting" scheme="http://keep-a.live/tags/painting/"/>
+    
+  </entry>
+  
+  <entry>
     <title>How to Setup a Teamspeak Server with Docker</title>
     <link href="http://keep-a.live/2022/02/15/How-to-Setup-a-Teamspeak-Server-with-Docker/"/>
     <id>http://keep-a.live/2022/02/15/How-to-Setup-a-Teamspeak-Server-with-Docker/</id>
     <published>2022-02-15T04:09:08.000Z</published>
-    <updated>2022-02-15T09:58:48.354Z</updated>
+    <updated>2022-02-15T11:07:39.698Z</updated>
     
-    <content type="html"><![CDATA[<h2><span id="我的语音聊天服务器">🎮我的语音聊天服务器</span></h2><p>（主要用于游戏连麦/聊天）</p><p><strong>地址</strong>：106.15.60.45</p><p><strong>密码</strong>：<font color="white">K3RRpIME</font></p><h2><span id="搭建teamspeak服务器">🧱搭建Teamspeak服务器</span></h2><p><a href="https://teamspeak.com/en/">Teamspeak</a>（简称TS）是一款团队语音通讯工具软件，很轻量、通话质量高而去保密性好，可以完美代替yy语音之类的软件（就连个麦搞那么大的客户端干嘛）。提示：使用TS客户端没必要注册账号，但如果你想注册记得去<a href="https://teamspeak.com/en/">官网</a>，而不是Teamspeak中文站。</p><p>服务器可以在<a href="http://www.ts1.cn/price">Teamspeak中文站</a>上买，但我刚好有个空闲的服务器，就打算用来搭TS了。</p><img src="https://raw.githubusercontent.com/Li-Jesse-Jiaze/oss/master/uPic/截屏2022-02-15%2017.19.50.png?token=GHSAT0AAAAAABRTBF5QCAUOQPOMU54RQA3CYQLPEEQ" style="zoom: 30%;"><p>使用Docker部署Teamspeak服务器可以说非常非常简单。</p><h3><span id="安装docker">🐳安装Docker</span></h3><p>网上有很多<a href="https://yeasy.gitbook.io/docker_practice/install">教程</a>，随便参考一个装好就行。由于我用的是阿里云的服务器，可以直接选带Docker的镜像。完成安装之后可以使用<code>docker -v</code>指令测试安装是否成功，如果能正常显示版本号就说明没问题。</p><p>建立好远程连接就可以开始配置了。阿里云的服务器最好先切换到root账号（输入<code>sudo su root</code>）</p><h3><span id="️使用docker安装ts-server">☎️使用Docker安装TS server</span></h3><p>运行</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -dit -p 9987:9987/udp -p 10011:10011 -p 30033:30033 -e TS3SERVER_LICENSE=accept teamspeak</span><br></pre></td></tr></table></figure><p>Docker就会自动下载最新的teamspeak镜像并启动服务，更多环境变量设置详见<a href="https://hub.docker.com/_/teamspeak">官方文档</a></p><h3><span id="修改防火墙规则">🔒修改防火墙规则</span></h3><p>TS server是不能直接通过防火墙的，所以需要在服务器后台把上面三个端口开放出来</p><img src="https://raw.githubusercontent.com/Li-Jesse-Jiaze/oss/master/uPic/截屏2022-02-15%2017.39.40.png?token=GHSAT0AAAAAABRTBF5RANZSC2ZY5RJ7CDE4YQLPEMQ" style="zoom:30%;"><h3><span id="管理员密钥">🔑管理员密钥</span></h3><p>TS服务器启动的时候会打印出一些信息，主要有管理员的用户名、密码以及Token等。但我们之前使用了<code>docker run -dit</code>让容器在后台运行，所以并没有显示出来。这时候就需要查看Docker的logs来获取这些信息。</p><p>找到容器的ID</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure><p>查看log</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs -f [CONTATINER ID]</span><br></pre></td></tr></table></figure><p>这个[CONTATINER ID]就是上面找到的TS对应的容器🆔</p><p>这时候就能看到管理员的用户名、密码以及Token等信息了，配置客户端是填入即可。</p><h2><span id="mac-os闪退bug">🐞Mac OS闪退bug</span></h2><p>从官网上下载MacOS的客户端连接服务器的时候可能会闪退</p><img src="https://raw.githubusercontent.com/Li-Jesse-Jiaze/oss/master/uPic/截屏2022-02-15%2017.48.25.png?token=GHSAT0AAAAAABRTBF5Q5JVG3GZDGZBW2FM4YQLPEVQ" style="zoom: 30%;"><p>一点Connect就闪退，这bug还<a href="https://community.teamspeak.com/t/ts-client-crashes-on-macos-11-3-11-4/17656">挺常见的</a>。解决办法是下载Teamspeak3的beta版，这里是<a href="http://files.teamspeak-services.com/pre_releases/client/3.5.7-beta.1/TeamSpeak3-Client-macosx-3.5.7.dmg">下载链接</a>。这么严重的Bug（快一年了），而且beta版已经修复了，为什么一直不发正式版呢？！想不明白</p>]]></content>
+    <content type="html"><![CDATA[<h2><span id="我的语音聊天服务器">🎮我的语音聊天服务器</span></h2><p>（主要用于游戏连麦/聊天）</p><p><strong>地址</strong>：106.15.60.45</p><p><strong>密码</strong>：<font color="white">K3RRpIME</font></p><h2><span id="搭建teamspeak服务器">🧱搭建Teamspeak服务器</span></h2><p><a href="https://teamspeak.com/en/">Teamspeak</a>（简称TS）是一款团队语音通讯工具软件，很轻量、通话质量高而去保密性好，可以完美代替yy语音之类的软件（就连个麦搞那么大的客户端干嘛）。提示：使用TS客户端没必要注册账号，但如果你想注册记得去<a href="https://teamspeak.com/en/">官网</a>，而不是Teamspeak中文站。</p><p>服务器可以在<a href="http://www.ts1.cn/price">Teamspeak中文站</a>上买，但我刚好有个空闲的服务器，就打算用来搭TS了。</p><p>![截屏2022-02-1517.19.50](<a href="https://gitee.com/lee-jesse-jiaze/picture-bed/raw/master/uPic/%E6%88%AA%E5%B1%8F2022-02-15">https://gitee.com/lee-jesse-jiaze/picture-bed/raw/master/uPic/截屏2022-02-15</a> 17.19.50.png)</p><p>使用Docker部署Teamspeak服务器可以说非常非常简单。</p><h3><span id="安装docker">🐳安装Docker</span></h3><p>网上有很多<a href="https://yeasy.gitbook.io/docker_practice/install">教程</a>，随便参考一个装好就行。由于我用的是阿里云的服务器，可以直接选带Docker的镜像。完成安装之后可以使用<code>docker -v</code>指令测试安装是否成功，如果能正常显示版本号就说明没问题。</p><p>建立好远程连接就可以开始配置了。阿里云的服务器最好先切换到root账号（输入<code>sudo su root</code>）</p><h3><span id="️使用docker安装ts-server">☎️使用Docker安装TS server</span></h3><p>运行</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -dit -p 9987:9987/udp -p 10011:10011 -p 30033:30033 -e TS3SERVER_LICENSE=accept teamspeak</span><br></pre></td></tr></table></figure><p>Docker就会自动下载最新的teamspeak镜像并启动服务，更多环境变量设置详见<a href="https://hub.docker.com/_/teamspeak">官方文档</a></p><h3><span id="修改防火墙规则">🔒修改防火墙规则</span></h3><p>TS server是不能直接通过防火墙的，所以需要在服务器后台把上面三个端口开放出来</p><p>![截屏2022-02-1517.39.40](<a href="https://gitee.com/lee-jesse-jiaze/picture-bed/raw/master/uPic/%E6%88%AA%E5%B1%8F2022-02-15">https://gitee.com/lee-jesse-jiaze/picture-bed/raw/master/uPic/截屏2022-02-15</a> 17.39.40.png)</p><h3><span id="管理员密钥">🔑管理员密钥</span></h3><p>TS服务器启动的时候会打印出一些信息，主要有管理员的用户名、密码以及Token等。但我们之前使用了<code>docker run -dit</code>让容器在后台运行，所以并没有显示出来。这时候就需要查看Docker的logs来获取这些信息。</p><p>找到容器的ID</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure><p>查看log</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs -f [CONTATINER ID]</span><br></pre></td></tr></table></figure><p>这个[CONTATINER ID]就是上面找到的TS对应的容器🆔</p><p>这时候就能看到管理员的用户名、密码以及Token等信息了，配置客户端是填入即可。</p><h2><span id="mac-os闪退bug">🐞Mac OS闪退bug</span></h2><p>从官网上下载MacOS的客户端连接服务器的时候可能会闪退</p><p>![截屏2022-02-1517.48.25](<a href="https://gitee.com/lee-jesse-jiaze/picture-bed/raw/master/uPic/%E6%88%AA%E5%B1%8F2022-02-15">https://gitee.com/lee-jesse-jiaze/picture-bed/raw/master/uPic/截屏2022-02-15</a> 17.48.25.png)</p><p>一点Connect就闪退，这bug还<a href="https://community.teamspeak.com/t/ts-client-crashes-on-macos-11-3-11-4/17656">挺常见的</a>。解决办法是下载Teamspeak3的beta版，这里是<a href="http://files.teamspeak-services.com/pre_releases/client/3.5.7-beta.1/TeamSpeak3-Client-macosx-3.5.7.dmg">下载链接</a>。这么严重的Bug（快一年了），而且beta版已经修复了，为什么一直不发正式版呢？！想不明白</p>]]></content>
     
     
       
