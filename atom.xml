@@ -46,9 +46,9 @@
     <link href="http://keep-a.live/2022/02/15/How-to-Setup-a-Teamspeak-Server-with-Docker/"/>
     <id>http://keep-a.live/2022/02/15/How-to-Setup-a-Teamspeak-Server-with-Docker/</id>
     <published>2022-02-15T04:09:08.000Z</published>
-    <updated>2022-02-15T11:07:39.698Z</updated>
+    <updated>2022-02-15T11:15:24.325Z</updated>
     
-    <content type="html"><![CDATA[<h2><span id="我的语音聊天服务器">🎮我的语音聊天服务器</span></h2><p>（主要用于游戏连麦/聊天）</p><p><strong>地址</strong>：106.15.60.45</p><p><strong>密码</strong>：<font color="white">K3RRpIME</font></p><h2><span id="搭建teamspeak服务器">🧱搭建Teamspeak服务器</span></h2><p><a href="https://teamspeak.com/en/">Teamspeak</a>（简称TS）是一款团队语音通讯工具软件，很轻量、通话质量高而去保密性好，可以完美代替yy语音之类的软件（就连个麦搞那么大的客户端干嘛）。提示：使用TS客户端没必要注册账号，但如果你想注册记得去<a href="https://teamspeak.com/en/">官网</a>，而不是Teamspeak中文站。</p><p>服务器可以在<a href="http://www.ts1.cn/price">Teamspeak中文站</a>上买，但我刚好有个空闲的服务器，就打算用来搭TS了。</p><p>![截屏2022-02-1517.19.50](<a href="https://gitee.com/lee-jesse-jiaze/picture-bed/raw/master/uPic/%E6%88%AA%E5%B1%8F2022-02-15">https://gitee.com/lee-jesse-jiaze/picture-bed/raw/master/uPic/截屏2022-02-15</a> 17.19.50.png)</p><p>使用Docker部署Teamspeak服务器可以说非常非常简单。</p><h3><span id="安装docker">🐳安装Docker</span></h3><p>网上有很多<a href="https://yeasy.gitbook.io/docker_practice/install">教程</a>，随便参考一个装好就行。由于我用的是阿里云的服务器，可以直接选带Docker的镜像。完成安装之后可以使用<code>docker -v</code>指令测试安装是否成功，如果能正常显示版本号就说明没问题。</p><p>建立好远程连接就可以开始配置了。阿里云的服务器最好先切换到root账号（输入<code>sudo su root</code>）</p><h3><span id="️使用docker安装ts-server">☎️使用Docker安装TS server</span></h3><p>运行</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -dit -p 9987:9987/udp -p 10011:10011 -p 30033:30033 -e TS3SERVER_LICENSE=accept teamspeak</span><br></pre></td></tr></table></figure><p>Docker就会自动下载最新的teamspeak镜像并启动服务，更多环境变量设置详见<a href="https://hub.docker.com/_/teamspeak">官方文档</a></p><h3><span id="修改防火墙规则">🔒修改防火墙规则</span></h3><p>TS server是不能直接通过防火墙的，所以需要在服务器后台把上面三个端口开放出来</p><p>![截屏2022-02-1517.39.40](<a href="https://gitee.com/lee-jesse-jiaze/picture-bed/raw/master/uPic/%E6%88%AA%E5%B1%8F2022-02-15">https://gitee.com/lee-jesse-jiaze/picture-bed/raw/master/uPic/截屏2022-02-15</a> 17.39.40.png)</p><h3><span id="管理员密钥">🔑管理员密钥</span></h3><p>TS服务器启动的时候会打印出一些信息，主要有管理员的用户名、密码以及Token等。但我们之前使用了<code>docker run -dit</code>让容器在后台运行，所以并没有显示出来。这时候就需要查看Docker的logs来获取这些信息。</p><p>找到容器的ID</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure><p>查看log</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs -f [CONTATINER ID]</span><br></pre></td></tr></table></figure><p>这个[CONTATINER ID]就是上面找到的TS对应的容器🆔</p><p>这时候就能看到管理员的用户名、密码以及Token等信息了，配置客户端是填入即可。</p><h2><span id="mac-os闪退bug">🐞Mac OS闪退bug</span></h2><p>从官网上下载MacOS的客户端连接服务器的时候可能会闪退</p><p>![截屏2022-02-1517.48.25](<a href="https://gitee.com/lee-jesse-jiaze/picture-bed/raw/master/uPic/%E6%88%AA%E5%B1%8F2022-02-15">https://gitee.com/lee-jesse-jiaze/picture-bed/raw/master/uPic/截屏2022-02-15</a> 17.48.25.png)</p><p>一点Connect就闪退，这bug还<a href="https://community.teamspeak.com/t/ts-client-crashes-on-macos-11-3-11-4/17656">挺常见的</a>。解决办法是下载Teamspeak3的beta版，这里是<a href="http://files.teamspeak-services.com/pre_releases/client/3.5.7-beta.1/TeamSpeak3-Client-macosx-3.5.7.dmg">下载链接</a>。这么严重的Bug（快一年了），而且beta版已经修复了，为什么一直不发正式版呢？！想不明白</p>]]></content>
+    <content type="html"><![CDATA[<h2><span id="我的语音聊天服务器">🎮我的语音聊天服务器</span></h2><p>（主要用于游戏连麦/聊天）</p><p><strong>地址</strong>：106.15.60.45</p><p><strong>密码</strong>：<font color="white">K3RRpIME</font></p><h2><span id="搭建teamspeak服务器">🧱搭建Teamspeak服务器</span></h2><p><a href="https://teamspeak.com/en/">Teamspeak</a>（简称TS）是一款团队语音通讯工具软件，很轻量、通话质量高而去保密性好，可以完美代替yy语音之类的软件（就连个麦搞那么大的客户端干嘛）。提示：使用TS客户端没必要注册账号，但如果你想注册记得去<a href="https://teamspeak.com/en/">官网</a>，而不是Teamspeak中文站。</p><p>服务器可以在<a href="http://www.ts1.cn/price">Teamspeak中文站</a>上买，但我刚好有个空闲的服务器，就打算用来搭TS了。</p><p><img src="https://gitee.com/lee-jesse-jiaze/picture-bed/raw/master/uPic/截屏2022-02-15 17.19.50.png" style="zoom:50%;"></p><p>使用Docker部署Teamspeak服务器可以说非常非常简单。</p><h3><span id="安装docker">🐳安装Docker</span></h3><p>网上有很多<a href="https://yeasy.gitbook.io/docker_practice/install">教程</a>，随便参考一个装好就行。由于我用的是阿里云的服务器，可以直接选带Docker的镜像。完成安装之后可以使用<code>docker -v</code>指令测试安装是否成功，如果能正常显示版本号就说明没问题。</p><p>建立好远程连接就可以开始配置了。阿里云的服务器最好先切换到root账号（输入<code>sudo su root</code>）</p><h3><span id="️使用docker安装ts-server">☎️使用Docker安装TS server</span></h3><p>运行</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -dit -p 9987:9987/udp -p 10011:10011 -p 30033:30033 -e TS3SERVER_LICENSE=accept teamspeak</span><br></pre></td></tr></table></figure><p>Docker就会自动下载最新的teamspeak镜像并启动服务，更多环境变量设置详见<a href="https://hub.docker.com/_/teamspeak">官方文档</a></p><h3><span id="修改防火墙规则">🔒修改防火墙规则</span></h3><p>TS server是不能直接通过防火墙的，所以需要在服务器后台把上面三个端口开放出来</p><p><img src="https://gitee.com/lee-jesse-jiaze/picture-bed/raw/master/uPic/截屏2022-02-15 17.39.40.png" style="zoom:50%;"></p><h3><span id="管理员密钥">🔑管理员密钥</span></h3><p>TS服务器启动的时候会打印出一些信息，主要有管理员的用户名、密码以及Token等。但我们之前使用了<code>docker run -dit</code>让容器在后台运行，所以并没有显示出来。这时候就需要查看Docker的logs来获取这些信息。</p><p>找到容器的ID</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure><p>查看log</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs -f [CONTATINER ID]</span><br></pre></td></tr></table></figure><p>这个[CONTATINER ID]就是上面找到的TS对应的容器🆔</p><p>这时候就能看到管理员的用户名、密码以及Token等信息了，配置客户端是填入即可。</p><h2><span id="mac-os闪退bug">🐞Mac OS闪退bug</span></h2><p>从官网上下载MacOS的客户端连接服务器的时候可能会闪退</p><p><img src="https://gitee.com/lee-jesse-jiaze/picture-bed/raw/master/uPic/截屏2022-02-15 17.48.25.png" alt="截屏2022-02-1517.48.25" style="zoom:50%;"></p><p>一点Connect就闪退，这bug还<a href="https://community.teamspeak.com/t/ts-client-crashes-on-macos-11-3-11-4/17656">挺常见的</a>。解决办法是下载Teamspeak3的beta版，这里是<a href="http://files.teamspeak-services.com/pre_releases/client/3.5.7-beta.1/TeamSpeak3-Client-macosx-3.5.7.dmg">下载链接</a>。这么严重的Bug（快一年了），而且beta版已经修复了，为什么一直不发正式版呢？！想不明白</p>]]></content>
     
     
       
@@ -94,35 +94,6 @@
   </entry>
   
   <entry>
-    <title>WSL使用Windows中的V2rayN</title>
-    <link href="http://keep-a.live/2021/12/22/WSL%E4%BD%BF%E7%94%A8Windows%E4%B8%AD%E7%9A%84V2rayN/"/>
-    <id>http://keep-a.live/2021/12/22/WSL%E4%BD%BF%E7%94%A8Windows%E4%B8%AD%E7%9A%84V2rayN/</id>
-    <published>2021-12-22T07:54:45.000Z</published>
-    <updated>2021-12-24T10:00:28.727Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="/2021/12/22/WSL使用Windows中的V2rayN/">中文</a>｜<a href="/2021/12/22/WSL2-use-proxy-of-Windows/">English</a></p><p>安装<code>proxychains4</code></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install proxychains4</span><br></pre></td></tr></table></figure><p>在普通的Ubuntu/<strong>WSL1</strong>中要配置<code>proxychains4</code>只需要修改一下<code>/etc/proxychains4.conf</code>就行。具体做法是</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/proxychains4.conf</span><br></pre></td></tr></table></figure><p>到最下面一行按照它写好的格式修改端口为你所用代理的端口。</p><p>但是在<strong>WSL2</strong>中，子系统和主机的地址并不一样，也就是说不能直接用127.0.0.1了。</p><p>你可以使用以下命令查看主机的IP</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/resolv.conf | grep nameserver | awk &#x27;&#123; print $2 &#125;&#x27;</span><br></pre></td></tr></table></figure><p>所以只需要在<code>~/.zshrc</code>或者<code>～/.bashrc</code>中加上以下两行</p><p>⚠️用的是v2rayN所以是<code>10808</code>端口，请根据你用的代理自行调整一下</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hostip=$(cat /etc/resolv.conf | grep nameserver | awk &#x27;&#123; print $2 &#125;&#x27;)</span><br><span class="line">sudo sed -i &quot;$ c socks5 $&#123;hostip&#125; 10808&quot; /etc/proxychains4.conf</span><br></pre></td></tr></table></figure><p>在每次开命令行的时候自动更改<code>/etc/proxychains4.conf</code>的最后一行</p><p>之后你就可以通过在命令前添加proxychains4来走代理了</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 curl myip.ipip.net</span><br><span class="line">当前 IP：XXX.XXX.XX.XXX  来自于：荷兰 北荷兰省 阿姆斯特丹  it7.net</span><br></pre></td></tr></table></figure><p>另外proxychains4要写在sudo后面</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo proxychains4 apt-get update</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;/2021/12/22/WSL使用Windows中的V2rayN/&quot;&gt;中文&lt;/a&gt;｜&lt;a href=&quot;/2021/12/22/WSL2-use-proxy-of-Windows/&quot;&gt;English&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;安装&lt;code&gt;proxychain</summary>
-      
-    
-    
-    
-    
-    <category term="WSL2" scheme="http://keep-a.live/tags/WSL2/"/>
-    
-    <category term="Tutorials" scheme="http://keep-a.live/tags/Tutorials/"/>
-    
-    <category term="Windows" scheme="http://keep-a.live/tags/Windows/"/>
-    
-    <category term="proxy" scheme="http://keep-a.live/tags/proxy/"/>
-    
-  </entry>
-  
-  <entry>
     <title>WSL2 use proxy of Windows</title>
     <link href="http://keep-a.live/2021/12/22/WSL2-use-proxy-of-Windows/"/>
     <id>http://keep-a.live/2021/12/22/WSL2-use-proxy-of-Windows/</id>
@@ -141,9 +112,38 @@
     
     
     
+    <category term="Tutorials" scheme="http://keep-a.live/tags/Tutorials/"/>
+    
     <category term="WSL2" scheme="http://keep-a.live/tags/WSL2/"/>
     
+    <category term="Windows" scheme="http://keep-a.live/tags/Windows/"/>
+    
+    <category term="proxy" scheme="http://keep-a.live/tags/proxy/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>WSL使用Windows中的V2rayN</title>
+    <link href="http://keep-a.live/2021/12/22/WSL%E4%BD%BF%E7%94%A8Windows%E4%B8%AD%E7%9A%84V2rayN/"/>
+    <id>http://keep-a.live/2021/12/22/WSL%E4%BD%BF%E7%94%A8Windows%E4%B8%AD%E7%9A%84V2rayN/</id>
+    <published>2021-12-22T07:54:45.000Z</published>
+    <updated>2021-12-24T10:00:28.727Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="/2021/12/22/WSL使用Windows中的V2rayN/">中文</a>｜<a href="/2021/12/22/WSL2-use-proxy-of-Windows/">English</a></p><p>安装<code>proxychains4</code></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install proxychains4</span><br></pre></td></tr></table></figure><p>在普通的Ubuntu/<strong>WSL1</strong>中要配置<code>proxychains4</code>只需要修改一下<code>/etc/proxychains4.conf</code>就行。具体做法是</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/proxychains4.conf</span><br></pre></td></tr></table></figure><p>到最下面一行按照它写好的格式修改端口为你所用代理的端口。</p><p>但是在<strong>WSL2</strong>中，子系统和主机的地址并不一样，也就是说不能直接用127.0.0.1了。</p><p>你可以使用以下命令查看主机的IP</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/resolv.conf | grep nameserver | awk &#x27;&#123; print $2 &#125;&#x27;</span><br></pre></td></tr></table></figure><p>所以只需要在<code>~/.zshrc</code>或者<code>～/.bashrc</code>中加上以下两行</p><p>⚠️用的是v2rayN所以是<code>10808</code>端口，请根据你用的代理自行调整一下</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hostip=$(cat /etc/resolv.conf | grep nameserver | awk &#x27;&#123; print $2 &#125;&#x27;)</span><br><span class="line">sudo sed -i &quot;$ c socks5 $&#123;hostip&#125; 10808&quot; /etc/proxychains4.conf</span><br></pre></td></tr></table></figure><p>在每次开命令行的时候自动更改<code>/etc/proxychains4.conf</code>的最后一行</p><p>之后你就可以通过在命令前添加proxychains4来走代理了</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 curl myip.ipip.net</span><br><span class="line">当前 IP：XXX.XXX.XX.XXX  来自于：荷兰 北荷兰省 阿姆斯特丹  it7.net</span><br></pre></td></tr></table></figure><p>另外proxychains4要写在sudo后面</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo proxychains4 apt-get update</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;/2021/12/22/WSL使用Windows中的V2rayN/&quot;&gt;中文&lt;/a&gt;｜&lt;a href=&quot;/2021/12/22/WSL2-use-proxy-of-Windows/&quot;&gt;English&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;安装&lt;code&gt;proxychain</summary>
+      
+    
+    
+    
+    
     <category term="Tutorials" scheme="http://keep-a.live/tags/Tutorials/"/>
+    
+    <category term="WSL2" scheme="http://keep-a.live/tags/WSL2/"/>
     
     <category term="Windows" scheme="http://keep-a.live/tags/Windows/"/>
     
@@ -171,11 +171,11 @@
     
     
     
+    <category term="Tutorials" scheme="http://keep-a.live/tags/Tutorials/"/>
+    
     <category term="WSL2" scheme="http://keep-a.live/tags/WSL2/"/>
     
     <category term="CUDA" scheme="http://keep-a.live/tags/CUDA/"/>
-    
-    <category term="Tutorials" scheme="http://keep-a.live/tags/Tutorials/"/>
     
     <category term="Windows" scheme="http://keep-a.live/tags/Windows/"/>
     
@@ -384,13 +384,13 @@
     <category term="gallery" scheme="http://keep-a.live/categories/gallery/"/>
     
     
-    <category term="theme" scheme="http://keep-a.live/tags/theme/"/>
-    
-    <category term="css" scheme="http://keep-a.live/tags/css/"/>
-    
     <category term="markdown" scheme="http://keep-a.live/tags/markdown/"/>
     
+    <category term="theme" scheme="http://keep-a.live/tags/theme/"/>
+    
     <category term="Typora" scheme="http://keep-a.live/tags/Typora/"/>
+    
+    <category term="css" scheme="http://keep-a.live/tags/css/"/>
     
     <category term="Projects" scheme="http://keep-a.live/tags/Projects/"/>
     
