@@ -384,13 +384,13 @@
     <category term="gallery" scheme="http://keep-a.live/categories/gallery/"/>
     
     
-    <category term="markdown" scheme="http://keep-a.live/tags/markdown/"/>
-    
     <category term="theme" scheme="http://keep-a.live/tags/theme/"/>
     
-    <category term="Typora" scheme="http://keep-a.live/tags/Typora/"/>
-    
     <category term="css" scheme="http://keep-a.live/tags/css/"/>
+    
+    <category term="markdown" scheme="http://keep-a.live/tags/markdown/"/>
+    
+    <category term="Typora" scheme="http://keep-a.live/tags/Typora/"/>
     
     <category term="Projects" scheme="http://keep-a.live/tags/Projects/"/>
     
