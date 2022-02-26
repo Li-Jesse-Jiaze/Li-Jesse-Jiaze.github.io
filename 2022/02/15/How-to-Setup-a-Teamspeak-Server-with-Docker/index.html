@@ -181,7 +181,7 @@
 <h2><span id="搭建teamspeak服务器">🧱搭建Teamspeak服务器</span></h2>
 <p><a target="_blank" rel="noopener" href="https://teamspeak.com/en/">Teamspeak</a>（简称TS）是一款团队语音通讯工具软件，很轻量、通话质量高而去保密性好，可以完美代替yy语音之类的软件（就连个麦搞那么大的客户端干嘛）。提示：使用TS客户端没必要注册账号，但如果你想注册记得去<a target="_blank" rel="noopener" href="https://teamspeak.com/en/">官网</a>，而不是Teamspeak中文站。</p>
 <p>服务器可以在<a target="_blank" rel="noopener" href="http://www.ts1.cn/price">Teamspeak中文站</a>上买，但我刚好有个空闲的服务器，就打算用来搭TS了。</p>
-<p><img src="https://gitee.com/lee-jesse-jiaze/picture-bed/raw/master/uPic/截屏2022-02-15 17.19.50.png" style="zoom:50%;"></p>
+<img src="https://gitee.com/lee-jesse-jiaze/picture-bed/raw/master/uPic/截屏2022-02-15 17.19.50.png" style="zoom:50%;">
 <p>使用Docker部署Teamspeak服务器可以说非常非常简单。</p>
 <h3><span id="安装docker">🐳安装Docker</span></h3>
 <p>网上有很多<a target="_blank" rel="noopener" href="https://yeasy.gitbook.io/docker_practice/install">教程</a>，随便参考一个装好就行。由于我用的是阿里云的服务器，可以直接选带Docker的镜像。完成安装之后可以使用<code>docker -v</code>指令测试安装是否成功，如果能正常显示版本号就说明没问题。</p>
@@ -192,7 +192,7 @@
 <p>Docker就会自动下载最新的teamspeak镜像并启动服务，更多环境变量设置详见<a target="_blank" rel="noopener" href="https://hub.docker.com/_/teamspeak">官方文档</a></p>
 <h3><span id="修改防火墙规则">🔒修改防火墙规则</span></h3>
 <p>TS server是不能直接通过防火墙的，所以需要在服务器后台把上面三个端口开放出来</p>
-<p><img src="https://gitee.com/lee-jesse-jiaze/picture-bed/raw/master/uPic/截屏2022-02-15 17.39.40.png" style="zoom:50%;"></p>
+<img src="https://gitee.com/lee-jesse-jiaze/picture-bed/raw/master/uPic/截屏2022-02-15 17.39.40.png" style="zoom:50%;">
 <h3><span id="管理员密钥">🔑管理员密钥</span></h3>
 <p>TS服务器启动的时候会打印出一些信息，主要有管理员的用户名、密码以及Token等。但我们之前使用了<code>docker run -dit</code>让容器在后台运行，所以并没有显示出来。这时候就需要查看Docker的logs来获取这些信息。</p>
 <p>找到容器的ID</p>
@@ -203,7 +203,7 @@
 <p>这时候就能看到管理员的用户名、密码以及Token等信息了，配置客户端是填入即可。</p>
 <h2><span id="mac-os闪退bug">🐞Mac OS闪退bug</span></h2>
 <p>从官网上下载MacOS的客户端连接服务器的时候可能会闪退</p>
-<p><img src="https://gitee.com/lee-jesse-jiaze/picture-bed/raw/master/uPic/截屏2022-02-15 17.48.25.png" alt="截屏2022-02-1517.48.25" style="zoom:50%;"></p>
+<img src="https://gitee.com/lee-jesse-jiaze/picture-bed/raw/master/uPic/截屏2022-02-15 17.48.25.png" alt="截屏2022-02-1517.48.25" style="zoom:50%;">
 <p>一点Connect就闪退，这bug还<a target="_blank" rel="noopener" href="https://community.teamspeak.com/t/ts-client-crashes-on-macos-11-3-11-4/17656">挺常见的</a>。解决办法是下载Teamspeak3的beta版，这里是<a target="_blank" rel="noopener" href="http://files.teamspeak-services.com/pre_releases/client/3.5.7-beta.1/TeamSpeak3-Client-macosx-3.5.7.dmg">下载链接</a>。这么严重的Bug（快一年了），而且beta版已经修复了，为什么一直不发正式版呢？！想不明白</p>
 
 </div> 

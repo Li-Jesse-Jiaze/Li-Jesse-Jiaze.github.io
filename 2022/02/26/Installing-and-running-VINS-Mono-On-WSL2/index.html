@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Li Wenjian">
+
+
+
+
+
+
+
+<title>Installing and running VINS-Mono On WSL2 | keep alive</title>
+
+
+
+    <link rel="icon" href="/logo.png">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/frame.js"></script>
+    
+
+
+
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+<script src='https://unpkg.com/valine@1.4.16/dist/Valine.min.js'></script>
+
+<script type="text/javascript" src="/js/jquery-1.8.3.min.js"></script>
+<script src="/js/jquery.jscroll.js"></script>
+<style type="text/css">
+  pre { margin: 0; }
+  .centered { width: 380px; margin: 0 auto 0 auto; font-size: 10px; line-height: 10px;}
+  h1 { text-align: center; }
+</style>
+<script type="text/javascript">
+  $(function () {
+    $('#horse').jscroll({
+      padding: 2000,
+      loadingHtml: ''
+    });
+  });
+</script>
+
+  <!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="keep alive" type="application/atom+xml">
+</head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            <img class="logo-img" src="/cnaidc.png" alt="logo_image">
+            
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li>
+            
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li>
+            
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li>
+            
+          
+            
+              <li class="menu-item">
+                <a href="/about">About</a>
+              </li>
+            
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+                
+                    <span class="post-tag">
+                        <a href="/tags/Tutorials/">
+                            Tutorials
+                        </a>
+                    </span>    
+                
+                    <span class="post-tag">
+                        <a href="/tags/WSL2/">
+                            WSL2
+                        </a>
+                    </span>    
+                
+                    <span class="post-tag">
+                        <a href="/tags/Notes/">
+                            Notes
+                        </a>
+                    </span>    
+                
+                    <span class="post-tag">
+                        <a href="/tags/SLAM/">
+                            SLAM
+                        </a>
+                    </span>    
+                
+                    <span class="post-tag">
+                        <a href="/tags/graduation-project/">
+                            graduation project
+                        </a>
+                    </span>    
+                           
+            
+        </div>
+        <div class="post-title">
+            
+            
+                Installing and running VINS-Mono On WSL2
+            
+            
+        </div>
+        <span class="post-date">
+            2022, 02, 26
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <p>众所周知在WSLg发布之后，WSL成为了最好的Linux桌面版（bushi）。本文将记录WSL2(Ubuntu)中<strong>VINS-Mono</strong>的配置过程。</p>
+<p>VINS-Mono作为17年的项目，依赖的环境版本都很早，所以现在想要配置需要做一些调整。对于这种旧项目的复现，我认为原则应该是按照新的版本调整之前的代码，而非使用老版本的依赖项。</p>
+<h2><span id="安装依赖项">安装依赖项</span></h2>
+<h3><span id="ros">ROS</span></h3>
+<p>ROS有很多版本，目前官网推荐的ROS1版本为<strong>Noetic</strong></p>
+<p><img src="https://gitee.com/lee-jesse-jiaze/picture-bed/raw/master/uPic/RolMFR.png" alt="RolMFR"></p>
+<p>按<a target="_blank" rel="noopener" href="http://wiki.ros.org/noetic/Installation/Ubuntu">官方文档</a>安装即可，在这个过程中你可能需要使用<a href="/2021/12/22/WSL%E4%BD%BF%E7%94%A8Windows%E4%B8%AD%E7%9A%84V2rayN/">代理</a>。</p>
+<h3><span id="ceres-solver">Ceres Solver</span></h3>
+<p>直接参考<a target="_blank" rel="noopener" href="http://ceres-solver.org/installation.html">官网</a>安装2.0版本或者最新版均可，如果你想使用CUDA加速Ceres可以参考<a href="/2021/12/22/Install-CUDA/">这篇</a>。</p>
+<p>在完成安装之后VINS-Mono依赖的例如Eigen3/OpenCV/Cmake之类的依赖想均会自动装好。但值得注意的是Noetic自带的是OpenCV4，与<a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics">HKUST-Aerial-Robotics</a>/**<a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics/VINS-Mono">VINS-Mono</a>**中依赖的OpenCV3有所差异，这可能会引起一些问题。</p>
+<h2><span id="编译vins-mono">编译VINS-Mono</span></h2>
+<p>按照<a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics">HKUST-Aerial-Robotics</a>/**<a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics/VINS-Mono">VINS-Mono</a>**中的步骤</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd ~/catkin_ws/src</span><br><span class="line">git clone https://github.com/HKUST-Aerial-Robotics/VINS-Mono.git</span><br><span class="line">cd ../</span><br><span class="line">catkin_make</span><br><span class="line">source ~/catkin_ws/devel/setup.bash</span><br></pre></td></tr></table></figure>
+<p>这里可能遇到一系列问题</p>
+<h3><span id="ceres相关问题">Ceres相关问题</span></h3>
+<p>以<code>error: ‘integer_sequence’ is not a member of ‘std’</code>为例</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/include/ceres/internal/integer_sequence_algorithm.h:<span class="number">64</span>:<span class="number">21</span>: error: ‘integer_sequence’ is <span class="keyword">not</span> a member of ‘std’</span><br><span class="line"> <span class="class"><span class="keyword">struct</span> <span class="title">SumImpl</span>&lt;</span>std::integer_sequence&lt;T, N, Ns...&gt;&gt; &#123;</span><br><span class="line">                     ^~~~~~~~~~~~~~~~</span><br><span class="line">/usr/local/include/ceres/internal/integer_sequence_algorithm.h:<span class="number">64</span>:<span class="number">21</span>: error: ‘integer_sequence’ is <span class="keyword">not</span> a member of ‘std’</span><br><span class="line">/usr/local/include/ceres/internal/integer_sequence_algorithm.h:<span class="number">64</span>:<span class="number">46</span>: error: <span class="function">wrong number of <span class="keyword">template</span> <span class="title">arguments</span> <span class="params">(<span class="number">3</span>, should be <span class="number">1</span>)</span></span></span><br><span class="line"><span class="function"> struct SumImpl&lt;std::integer_sequence&lt;T, N, Ns...&gt;&gt; </span>&#123;</span><br><span class="line">                                              ^~~</span><br><span class="line">/usr/local/include/ceres/internal/integer_sequence_algorithm.h:<span class="number">60</span>:<span class="number">8</span>: note: provided <span class="keyword">for</span> ‘<span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">Seq</span>&gt;</span> <span class="class"><span class="keyword">struct</span> <span class="title">ceres</span>:</span>:internal::SumImpl’</span><br><span class="line"> <span class="class"><span class="keyword">struct</span> <span class="title">SumImpl</span>;</span></span><br><span class="line">        ^~~~~~~</span><br></pre></td></tr></table></figure>
+<p>这是因为Ceres需要C++ 14及以上，详见这个<a target="_blank" rel="noopener" href="https://github.com/ceres-solver/ceres-solver/issues/604">issues</a>。只要把VINS-Mono中所有的</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span>(CMAKE_CXX_FLAGS <span class="string">&quot;-std=c++11</span></span><br></pre></td></tr></table></figure>
+<p>替换成</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span>(CMAKE_CXX_FLAGS <span class="string">&quot;-std=c++14</span></span><br></pre></td></tr></table></figure>
+<p>即可</p>
+<h3><span id="opencv相关问题">OpenCV相关问题</span></h3>
+<p>例如<code>'CV_BGR2RGB' was not declared in this scope</code>，这是由于很多宏定义的名字在OpenCV3和4中不一样，会有很多诸如此类的报错，可以使用vscode中的正则表达式替换批量解决</p>
+<p><img src="https://gitee.com/lee-jesse-jiaze/picture-bed/raw/master/uPic/sccvscode.png" alt="sccvscode"></p>
+<ol>
+<li><strong>遇到OpenCV版本不对</strong></li>
+</ol>
+<p>​	查找：<code>(find_package\(OpenCV).*</code></p>
+<p>​	替换：<code>$1 REQUIRED)</code></p>
+<ol start="2">
+<li><strong>CV_GRAY2RGB等</strong></li>
+</ol>
+<p>​	查找: <code>CV_(.*GRAY[^)]*)</code></p>
+<p>​	替换: <code>cv::COLOR_$1</code></p>
+<ol start="3">
+<li><strong>CV_AA（不用正则表达式）</strong></li>
+</ol>
+<p>​	查找: <code>CV_AA</code></p>
+<p>​	替换: <code>cv::LINE_AA</code></p>
+<ol start="4">
+<li><strong>CV_CALIB_等</strong></li>
+</ol>
+<p>​	查找: <code>CV_(CALIB[^ ,)]*)</code></p>
+<p>​	替换: <code>cv::$1</code></p>
+<ol start="5">
+<li><strong>CV_LOAD_IMAGE_UNCHANGED、CV_LOAD_IMAGE_GRAYSCALE</strong></li>
+</ol>
+<p>​	查找：<code>CV_LOAD_IMAGE_([^ )]*)</code></p>
+<p>​	替换：<code>cv::IMREAD_$1</code></p>
+<ol start="6">
+<li><strong>CV_FONT_HERSHEY_SIMPLEX（不用正则表达式）</strong></li>
+</ol>
+<p>​	查找：<code>CV_FONT_HERSHEY_SIMPLEX</code></p>
+<p>​	替换：<code>cv::FONT_HERSHEY_SIMPLEX</code></p>
+<ol start="7">
+<li><strong>No such file or directory <code>#include&lt;opencv/cv.h&gt;</code>：</strong></li>
+</ol>
+<p>​	在对应文件添加</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/imgproc/imgproc_c.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/highgui/highgui_c.h&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>完成编译后按官方文档运行即可</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd ~/catkin_ws/devel/</span><br><span class="line">source ~/catkin_ws/devel/setup.bash</span><br><span class="line">roslaunch vins_estimator euroc.launch </span><br><span class="line">roslaunch vins_estimator vins_rviz.launch</span><br><span class="line">rosbag play YOUR_PATH_TO_DATASET/MH_01_easy.bag </span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/lee-jesse-jiaze/picture-bed/raw/master/uPic/IMG_2402.png" alt="IMG_2402"></p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2022/02/16/Share-a-painting-I-really-like/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+    
+        <div id="vcomments"></div>
+        <script>
+            var META = ['nick', 'mail', 'link'];
+            var meta = 'nick,mail';
+            meta = meta.split(',').filter(item => {
+                return META.includes(item);
+            });
+            new Valine({
+                el: '#vcomments',
+                appId: 'cKgvUMr2Olh4nFGVLuAYT9qR-gzGzoHsz',
+                appKey: 'O8oYV9aAIm2Sikg4CVAAi1W1',
+                lang: 'en',
+                placeholder: 'Say something',
+                avatar: 'mp',
+                meta: meta
+            })
+        </script>    
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            <!-- 
+                Liwenjian |
+             -->
+            <br>jesse@keep-alive:~<a id="pathname"></a>$ <a id="btapp";></a>
+            
+                <br>Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+            
+        </div>
+    </div>
+</div>
+
+<script src="/js/typewriter.js"></script>
+<script>
+    var pathname = window.location.pathname;
+    document.getElementById('pathname').innerText = pathname;
+    const btapp = document.getElementById('btapp');
+
+    const bttypewriter = new Typewriter(btapp, {
+        loop: true
+    });
+
+    bttypewriter.typeString('mkdir /cool/code')
+        .pauseFor(800)
+        .deleteChars(4)
+        .typeString('life')
+        .pauseFor(800)
+        .deleteAll()
+        .typeString('have fun')
+        .pauseFor(800)
+        .start();
+</script>
+
+    </div>
+
+  </body>
+</html>
