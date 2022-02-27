@@ -6,7 +6,7 @@
   <link href="http://keep-a.live/atom.xml" rel="self"/>
   
   <link href="http://keep-a.live/"/>
-  <updated>2022-02-26T15:53:04.497Z</updated>
+  <updated>2022-02-27T07:39:20.337Z</updated>
   <id>http://keep-a.live/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>VINS-Mono中回环检测的相关流程</title>
+    <link href="http://keep-a.live/2022/02/27/Loop-Detection-in-VINS-Mono/"/>
+    <id>http://keep-a.live/2022/02/27/Loop-Detection-in-VINS-Mono/</id>
+    <published>2022-02-27T07:27:55.000Z</published>
+    <updated>2022-02-27T07:39:20.337Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>pose_graph_node</strong> 主线程<code>process()</code></p><p>创建关键帧<code>KeyFrame* keyframe = new KeyFrame(...</code></p><p>↘️</p><p>  <strong>keyframe</strong> 构造函数<code>KeyFrame()</code></p><p>  计算新的特征点和描述子<code>computeBRIEFPoint()</code></p><p>↙️</p><p>添加关键帧<code>posegraph.addKeyFrame(keyframe, 1);</code></p><p>↘️</p><p>  <strong>pose_graph</strong> 添加关键帧函数<code>addKeyFrame()</code></p><p>  进行回环检测<code>loop_index = detectLoop(cur_kf, cur_kf-&gt;index);</code></p><p>  ↘️</p><p>    回环检测函数<code>detectLoop()</code></p><p>    查询数据库得到与每一帧的相似度评分<code>db.query(...</code></p><p>    返回评分大于0.015的最早的关键帧索引<code>min_index</code></p><p>  ↙️</p><p>  当前帧与回环候选帧进行描述子匹配<code>cur_kf-&gt;findConnection(old_kf)</code></p><p>  ↘️（匹配成功）</p><p>    计算当前帧与回环帧相对位姿等</p><p>  ↙️</p><p>  将当前帧放入优化队列中<code>optimize_buf.push(cur_kf-&gt;index)</code></p><p>休眠5ms后循环</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;strong&gt;pose_graph_node&lt;/strong&gt; 主线程&lt;code&gt;process()&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;创建关键帧&lt;code&gt;KeyFrame* keyframe = new KeyFrame(...&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;↘️&lt;/p&gt;
+&lt;</summary>
+      
+    
+    
+    
+    
+    <category term="Notes" scheme="http://keep-a.live/tags/Notes/"/>
+    
+    <category term="SLAM" scheme="http://keep-a.live/tags/SLAM/"/>
+    
+    <category term="graduation project" scheme="http://keep-a.live/tags/graduation-project/"/>
+    
+  </entry>
   
   <entry>
     <title>Installing and running VINS-Mono On WSL2</title>

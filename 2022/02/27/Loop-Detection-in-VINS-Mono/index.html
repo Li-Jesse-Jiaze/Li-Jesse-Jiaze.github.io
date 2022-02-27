@@ -14,7 +14,7 @@
 
 
 
-<title>Archive | keep alive</title>
+<title>VINS-Mono中回环检测的相关流程 | keep alive</title>
 
 
 
@@ -128,131 +128,127 @@
 
       <div class="main">
         <div class="flex-container">
-          <div class="post-list">
-    
-    
+          <article id="post">
 
-        
-
-        
-            <div class="year-title">2021</div>
-        
-
-        <div class="post-list-item">
-            <div class="post-title">
-            <a href="/2021/12/12/Progress-Report-6/">
-                
-                    Progress Report 6
-                
-                </a> 
-            </div>
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
             
-            <span class="post-date">2021, 12, 12</span>
-        </div>
-
-    
-
-        
-
-        
-
-        <div class="post-list-item">
-            <div class="post-title">
-            <a href="/2021/12/10/ZYZ%20at%20work/">
                 
-                    ZYZ at work
+                    <span class="post-tag">
+                        <a href="/tags/Notes/">
+                            Notes
+                        </a>
+                    </span>    
                 
-                </a> 
-            </div>
+                    <span class="post-tag">
+                        <a href="/tags/SLAM/">
+                            SLAM
+                        </a>
+                    </span>    
+                
+                    <span class="post-tag">
+                        <a href="/tags/graduation-project/">
+                            graduation project
+                        </a>
+                    </span>    
+                           
             
-            <span class="post-date">2021, 12, 10</span>
         </div>
-
-    
-
-        
-
-        
-
-        <div class="post-list-item">
-            <div class="post-title">
-            <a href="/2021/12/09/Interesting-things/">
-                
-                    Interesting things in this website
-                
-                </a> 
-            </div>
+        <div class="post-title">
             
-            <span class="post-date">2021, 12, 9</span>
-        </div>
-
-    
-
-        
-
-        
-
-        <div class="post-list-item">
-            <div class="post-title">
-            <a href="/2021/12/07/Wheatfield-with-Crows-my-favorite-painting/">
-                
-                    Wheatfield with Crows - one of my favorite paintings
-                
-                </a> 
-            </div>
             
-            <span class="post-date">2021, 12, 7</span>
-        </div>
-
-    
-
-        
-
-        
-
-        <div class="post-list-item">
-            <div class="post-title">
-            <a href="/2021/12/07/Liwenjian-Typora-theme/">
-                
-                    Liwenjian Typora theme
-                
-                </a> 
-            </div>
+                VINS-Mono中回环检测的相关流程
             
-            <span class="post-date">2021, 12, 7</span>
-        </div>
-
-    
-
-        
-
-        
-
-        <div class="post-list-item">
-            <div class="post-title">
-            <a href="/2021/12/07/hello-world/">
-                
-                    Hello World
-                
-                </a> 
-            </div>
             
-            <span class="post-date">2021, 12, 7</span>
         </div>
-
-    
-    <div id="paginator">
-        
-    <div class=paginator>
-        <div class="h-line-primary"></div>
-        <nav class="pagination">
-            <a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-        </nav>
+        <span class="post-date">
+            2022, 02, 27
+        </span>
     </div>
-
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
     </div>
 </div>
+    <div class="post-content">
+    <p><strong>pose_graph_node</strong> 主线程<code>process()</code></p>
+<p>创建关键帧<code>KeyFrame* keyframe = new KeyFrame(...</code></p>
+<p>↘️</p>
+<p>  <strong>keyframe</strong> 构造函数<code>KeyFrame()</code></p>
+<p>  计算新的特征点和描述子<code>computeBRIEFPoint()</code></p>
+<p>↙️</p>
+<p>添加关键帧<code>posegraph.addKeyFrame(keyframe, 1);</code></p>
+<p>↘️</p>
+<p>  <strong>pose_graph</strong> 添加关键帧函数<code>addKeyFrame()</code></p>
+<p>  进行回环检测<code>loop_index = detectLoop(cur_kf, cur_kf-&gt;index);</code></p>
+<p>  ↘️</p>
+<p>    回环检测函数<code>detectLoop()</code></p>
+<p>    查询数据库得到与每一帧的相似度评分<code>db.query(...</code></p>
+<p>    返回评分大于0.015的最早的关键帧索引<code>min_index</code></p>
+<p>  ↙️</p>
+<p>  当前帧与回环候选帧进行描述子匹配<code>cur_kf-&gt;findConnection(old_kf)</code></p>
+<p>  ↘️（匹配成功）</p>
+<p>    计算当前帧与回环帧相对位姿等</p>
+<p>  ↙️</p>
+<p>  将当前帧放入优化队列中<code>optimize_buf.push(cur_kf-&gt;index)</code></p>
+<p>休眠5ms后循环</p>
 
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2022/02/26/Installing-and-running-VINS-Mono-On-WSL2/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+    
+        <div id="vcomments"></div>
+        <script>
+            var META = ['nick', 'mail', 'link'];
+            var meta = 'nick,mail';
+            meta = meta.split(',').filter(item => {
+                return META.includes(item);
+            });
+            new Valine({
+                el: '#vcomments',
+                appId: 'cKgvUMr2Olh4nFGVLuAYT9qR-gzGzoHsz',
+                appKey: 'O8oYV9aAIm2Sikg4CVAAi1W1',
+                lang: 'en',
+                placeholder: 'Say something',
+                avatar: 'mp',
+                meta: meta
+            })
+        </script>    
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
         </div>
       </div>
       
