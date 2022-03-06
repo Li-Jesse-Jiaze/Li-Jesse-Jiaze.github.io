@@ -6,7 +6,7 @@
   <link href="http://keep-a.live/atom.xml" rel="self"/>
   
   <link href="http://keep-a.live/"/>
-  <updated>2022-02-27T07:39:20.337Z</updated>
+  <updated>2022-03-06T16:05:51.882Z</updated>
   <id>http://keep-a.live/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Weekend Monopoly Game</title>
+    <link href="http://keep-a.live/2022/03/06/Weekend-Monopoly-Game/"/>
+    <id>http://keep-a.live/2022/03/06/Weekend-Monopoly-Game/</id>
+    <published>2022-03-06T15:59:19.000Z</published>
+    <updated>2022-03-06T16:05:51.882Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;"><iframe src="//player.bilibili.com/player.html?aid=424550497&bvid=BV1y341157AY&cid=543476985&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; Left: 0; top: 0;" ></iframe></div>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;
+&lt;div style=&quot;position: relative; width: 100%; height: 0; padding-bottom: 75%;&quot;&gt;
+&lt;iframe sr</summary>
+      
+    
+    
+    
+    
+    <category term="games" scheme="http://keep-a.live/tags/games/"/>
+    
+    <category term="Board games" scheme="http://keep-a.live/tags/Board-games/"/>
+    
+  </entry>
   
   <entry>
     <title>VINS-Mono中回环检测的相关流程</title>
