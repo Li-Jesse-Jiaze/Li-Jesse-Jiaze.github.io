@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Li Wenjian">
+
+
+
+
+
+
+
+<title>在炮弹冲击（ShellShock Live）中进行精准打击 | keep alive</title>
+
+
+
+    <link rel="icon" href="/logo.png">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/frame.js"></script>
+    
+
+
+
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+<script src='https://unpkg.com/valine@1.4.16/dist/Valine.min.js'></script>
+
+<script type="text/javascript" src="/js/jquery-1.8.3.min.js"></script>
+<script src="/js/jquery.jscroll.js"></script>
+<style type="text/css">
+  pre { margin: 0; }
+  .centered { width: 380px; margin: 0 auto 0 auto; font-size: 10px; line-height: 10px;}
+  h1 { text-align: center; }
+</style>
+<script type="text/javascript">
+  $(function () {
+    $('#horse').jscroll({
+      padding: 2000,
+      loadingHtml: ''
+    });
+  });
+</script>
+
+  <!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="keep alive" type="application/atom+xml">
+</head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            <img class="logo-img" src="/cnaidc.png" alt="logo_image">
+            
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li>
+            
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li>
+            
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li>
+            
+          
+            
+              <li class="menu-item">
+                <a href="/about">About</a>
+              </li>
+            
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+                
+                    <span class="post-tag">
+                        <a href="/tags/video-games/">
+                            video games
+                        </a>
+                    </span>    
+                
+                    <span class="post-tag">
+                        <a href="/tags/games/">
+                            games
+                        </a>
+                    </span>    
+                
+                    <span class="post-tag">
+                        <a href="/tags/ShellShock-Live/">
+                            ShellShock Live
+                        </a>
+                    </span>    
+                           
+            
+        </div>
+        <div class="post-title">
+            
+            
+                在炮弹冲击（ShellShock Live）中进行精准打击
+            
+            
+        </div>
+        <span class="post-date">
+            2022, 03, 7
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <img src="https://gitee.com/lee-jesse-jiaze/picture-bed/raw/master/uPic/sshl.png" alt="featured_image">
+              
+    </div>
+</div>
+    <div class="post-content">
+    <script src="/assets/js/DPlayer.min.js"> </script><p>炮弹冲击(ShellShock Live)是一款战略类多人在线火炮游戏，类似于小时候4399上的弹弹堂。众所周知，这类游戏有着真实的物理引擎，所以其打出炮弹的轨迹当然也是可以计算的。</p>
+<h2 id="模型">🚢 模型</h2>
+<p>炮弹的飞行就是一个简单的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/平抛运动">抛体运动</a>（在不考虑风力的情况下）</p>
+<p>而问题就在于求出游戏中的</p>
+<ul>
+<li>重力加速度（像素<span class="math inline">\(/\text{s}^2\)</span>）</li>
+<li>速度（像素<span class="math inline">\(/\text{s}\)</span>）和力度的对应关系</li>
+</ul>
+<p>关于这两点，大佬在steam上的一篇指南<a target="_blank" rel="noopener" href="https://steamcommunity.com/sharedfiles/filedetails/?id=1327582953">Perfect accuracy with CALCULATIONS</a>中讲解的十分详细，并且通过测量炮弹飞行时间等一系列方法计算出了游戏中的参数，并且给出了最终的公式 <span class="math display">\[
+\text{power}=\frac {-2} {gq} * \sqrt{\frac {-g*s_x^2} {2\cos^2\Theta*(\tan\Theta*s_x-s_y)}}
+\]</span> 其中<span class="math inline">\(s_x\)</span>为水平距离，<span class="math inline">\(s_y\)</span>为垂直距离，<span class="math inline">\(\Theta\)</span>为发射角度，<span class="math inline">\(g=-379.106\)</span>为重力加速度，<span class="math inline">\(q=0.0518718\)</span>为常数。</p>
+<p>有了这个公式就可以通过<strong>起点</strong>与<strong>终点</strong>的坐标，在给定<strong>发射角度</strong>的情况下，给出应该使用的<strong>力度</strong>。</p>
+<h2 id="程序">⚙️程序</h2>
+<p>这个程序主要参考了Github上项目<a target="_blank" rel="noopener" href="https://github.com/henrydatei">henrydatei</a>/<strong><a target="_blank" rel="noopener" href="https://github.com/henrydatei/ShellShockLiveAimbot">ShellShockLiveAimbot</a></strong>，并做出了一些细微调整</p>
+<p>使用上面的公式计算力度</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># calculate velocity</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calcVelocity</span>(<span class="params">x_diff, y_diff, angle</span>):</span></span><br><span class="line">    <span class="comment"># from https://steamcommunity.com/sharedfiles/filedetails/?id=1327582953</span></span><br><span class="line">    g = -<span class="number">379.106</span></span><br><span class="line">    q = <span class="number">0.0518718</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        v0 = -<span class="number">2</span> / (g * q) * math.sqrt((-g * x_diff * x_diff) / (</span><br><span class="line">            <span class="number">2</span> * math.cos(math.radians(angle)) *</span><br><span class="line">            math.cos(math.radians(angle)) * (</span><br><span class="line">            math.tan(math.radians(angle)) * x_diff - y_diff)))</span><br><span class="line">    <span class="keyword">except</span> ZeroDivisionError:</span><br><span class="line">        v0 = <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> v0</span><br></pre></td></tr></table></figure>
+<p>但是游戏里的力度，范围是0～100，所以我们就要找出能打到的角度</p>
+<p>这里我们计算两个角度，一个是能打到的最小角度，另一个是最大角度（也就是最大力度），以适应多变的环境（传送门、反弹等）</p>
+<p>以最小角度为例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calcOptimal</span>(<span class="params">x_diff, y_diff, wind</span>):</span></span><br><span class="line">    smallestVelocity = <span class="number">100</span></span><br><span class="line">    bestAngle = <span class="number">0</span></span><br><span class="line">    <span class="keyword">global</span> velocity</span><br><span class="line">    <span class="keyword">global</span> angle</span><br><span class="line">    <span class="keyword">for</span> possibleAngle <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">90</span>):</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">if</span> wind == <span class="number">0</span>:</span><br><span class="line">                v0 = calcVelocity(x_diff, y_diff, possibleAngle)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                v0 = calcVelocityWithWind(x_diff, y_diff,</span><br><span class="line">                possibleAngle, wind)</span><br><span class="line">            <span class="keyword">if</span> v0 &lt; smallestVelocity:</span><br><span class="line">                smallestVelocity = v0</span><br><span class="line">                bestAngle = possibleAngle</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Smallest Velocity&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Velocity = &quot;</span> + <span class="built_in">str</span>(smallestVelocity))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Angle = &quot;</span> + <span class="built_in">str</span>(bestAngle))</span><br><span class="line">    velocity = smallestVelocity</span><br><span class="line">    angle = bestAngle</span><br></pre></td></tr></table></figure>
+<p>另外需要做的就是获取你和目标的坐标，这里使用第三方库<code>pynput</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">posPlayer</span>(<span class="params">x, y, button, pressed</span>):</span></span><br><span class="line">    <span class="keyword">if</span> pressed:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Your position: &quot;</span> + <span class="built_in">str</span>(x) + <span class="string">&quot;, &quot;</span> + <span class="built_in">str</span>(y))</span><br><span class="line">        <span class="keyword">global</span> YourX</span><br><span class="line">        YourX = x</span><br><span class="line">        <span class="keyword">global</span> YourY</span><br><span class="line">        YourY = y</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+<p>完整代码<a href="\shellshock.py">下载</a></p>
+<p><strong>运行</strong>：</p>
+<ol type="1">
+<li>使用Steam打开游戏，在选项中选择1920x1080，窗口化</li>
+<li>命令行中使用<code>python shellshock.py</code>运行脚本</li>
+<li>键盘按Alt+P，然后使用鼠标点击自己的坦克位置</li>
+<li>键盘按Alt+E，使用鼠标点击目标位置</li>
+<li>命令行会给你弹出两个力度和角度，分别对应最平抛和最高抛</li>
+</ol>
+<h2 id="注意事项">⚠️注意事项</h2>
+<p>这属于技术性作弊，但依然是作弊行为，请不要在线上模式中使用。你可以用它来精准打击你的朋友，起到出其不意的效果，或者在单人模式中瞄准boss。</p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2022/03/06/Weekend-Monopoly-Game/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+    
+        <div id="vcomments"></div>
+        <script>
+            var META = ['nick', 'mail', 'link'];
+            var meta = 'nick,mail';
+            meta = meta.split(',').filter(item => {
+                return META.includes(item);
+            });
+            new Valine({
+                el: '#vcomments',
+                appId: 'cKgvUMr2Olh4nFGVLuAYT9qR-gzGzoHsz',
+                appKey: 'O8oYV9aAIm2Sikg4CVAAi1W1',
+                lang: 'en',
+                placeholder: 'Say something',
+                avatar: 'mp',
+                meta: meta
+            })
+        </script>    
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            <!-- 
+                Liwenjian |
+             -->
+            <br>jesse@keep-alive:~<a id="pathname"></a>$ <a id="btapp";></a>
+            
+                <br>Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+            
+        </div>
+    </div>
+</div>
+
+<script src="/js/typewriter.js"></script>
+<script>
+    var pathname = window.location.pathname;
+    document.getElementById('pathname').innerText = pathname;
+    const btapp = document.getElementById('btapp');
+
+    const bttypewriter = new Typewriter(btapp, {
+        loop: true
+    });
+
+    bttypewriter.typeString('mkdir /cool/code')
+        .pauseFor(800)
+        .deleteChars(4)
+        .typeString('life')
+        .pauseFor(800)
+        .deleteAll()
+        .typeString('have fun')
+        .pauseFor(800)
+        .start();
+</script>
+
+    </div>
+
+  </body>
+</html>
