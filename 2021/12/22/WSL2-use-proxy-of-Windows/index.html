@@ -180,14 +180,14 @@
     </div>
 </div>
     <div class="post-content">
-    <p><a href="/2021/12/22/WSL%E4%BD%BF%E7%94%A8Windows%E4%B8%AD%E7%9A%84V2rayN/">中文</a>｜<a href="/2021/12/22/WSL2-use-proxy-of-Windows/">English</a></p>
+    <script src="/assets/js/DPlayer.min.js"> </script><p><a href="/2021/12/22/WSL使用Windows中的V2rayN/">中文</a>｜<a href="/2021/12/22/WSL2-use-proxy-of-Windows/">English</a></p>
 <p>Install <code>proxychains4</code></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install proxychains4</span><br></pre></td></tr></table></figure>
 <p>To configure <code>proxychains4</code> in a normal Ubuntu or <strong>WSL1</strong>, you just need to modify <code>/etc/proxychains4.conf</code>.</p>
-<p>Here’s how to do it</p>
+<p>Here's how to do it</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/proxychains4.conf</span><br></pre></td></tr></table></figure>
 <p>Go to the bottom line and change the port according to the format it is written in. Make it match the proxy port you are using.</p>
-<p>But in <strong>WSL2</strong>, the address of the subsystem and the host are not the same, which means you can’t use 127.0.0.1 directly anymore.</p>
+<p>But in <strong>WSL2</strong>, the address of the subsystem and the host are not the same, which means you can't use 127.0.0.1 directly anymore.</p>
 <p>You can check the IP address of the host with the following command</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/resolv.conf | grep nameserver | awk &#x27;&#123; print $2 &#125;&#x27;</span><br></pre></td></tr></table></figure>
 <p>So just add the following two lines to <code>~/.zshrc</code> or <code>~/.bashrc</code></p>

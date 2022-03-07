@@ -266,6 +266,20 @@
   </url>
   
   <url>
+    <loc>http://keep-a.live/tags/games/</loc>
+    <lastmod>2022-03-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://keep-a.live/tags/life/</loc>
+    <lastmod>2022-03-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://keep-a.live/tags/Tutorials/</loc>
     <lastmod>2022-03-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -308,6 +322,27 @@
   </url>
   
   <url>
+    <loc>http://keep-a.live/tags/Notes/</loc>
+    <lastmod>2022-03-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://keep-a.live/tags/SLAM/</loc>
+    <lastmod>2022-03-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://keep-a.live/tags/graduation-project/</loc>
+    <lastmod>2022-03-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://keep-a.live/tags/theme/</loc>
     <lastmod>2022-03-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -336,27 +371,6 @@
   </url>
   
   <url>
-    <loc>http://keep-a.live/tags/Notes/</loc>
-    <lastmod>2022-03-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://keep-a.live/tags/SLAM/</loc>
-    <lastmod>2022-03-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://keep-a.live/tags/graduation-project/</loc>
-    <lastmod>2022-03-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://keep-a.live/tags/markdown/</loc>
     <lastmod>2022-03-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -378,6 +392,13 @@
   </url>
   
   <url>
+    <loc>http://keep-a.live/tags/ShellShock-Live/</loc>
+    <lastmod>2022-03-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://keep-a.live/tags/%E8%A7%86%E8%A7%89SLAM%E5%8D%81%E5%9B%9B%E8%AE%B2/</loc>
     <lastmod>2022-03-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -392,7 +413,14 @@
   </url>
   
   <url>
-    <loc>http://keep-a.live/tags/life/</loc>
+    <loc>http://keep-a.live/tags/proxy/</loc>
+    <lastmod>2022-03-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://keep-a.live/tags/Board-games/</loc>
     <lastmod>2022-03-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -413,20 +441,6 @@
   </url>
   
   <url>
-    <loc>http://keep-a.live/tags/Hello-World/</loc>
-    <lastmod>2022-03-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://keep-a.live/tags/proxy/</loc>
-    <lastmod>2022-03-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://keep-a.live/tags/zyz/</loc>
     <lastmod>2022-03-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -441,21 +455,7 @@
   </url>
   
   <url>
-    <loc>http://keep-a.live/tags/games/</loc>
-    <lastmod>2022-03-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://keep-a.live/tags/Board-games/</loc>
-    <lastmod>2022-03-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://keep-a.live/tags/ShellShock-Live/</loc>
+    <loc>http://keep-a.live/tags/Hello-World/</loc>
     <lastmod>2022-03-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

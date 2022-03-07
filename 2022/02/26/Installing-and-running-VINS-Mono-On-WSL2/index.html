@@ -186,21 +186,23 @@
     </div>
 </div>
     <div class="post-content">
-    <p>众所周知在WSLg发布之后，WSL成为了最好的Linux桌面版（bushi）。本文将记录WSL2(Ubuntu)中<strong>VINS-Mono</strong>的配置过程。</p>
+    <script src="/assets/js/DPlayer.min.js"> </script><p>众所周知在WSLg发布之后，WSL成为了最好的Linux桌面版（bushi）。本文将记录WSL2(Ubuntu)中<strong>VINS-Mono</strong>的配置过程。</p>
 <p>VINS-Mono作为17年的项目，依赖的环境版本都很早，所以现在想要配置需要做一些调整。对于这种旧项目的复现，我认为原则应该是按照新的版本调整之前的代码，而非使用老版本的依赖项。</p>
-<h2><span id="安装依赖项">安装依赖项</span></h2>
-<h3><span id="ros">ROS</span></h3>
+<h2 id="安装依赖项">安装依赖项</h2>
+<h3 id="ros">ROS</h3>
 <p>ROS有很多版本，目前官网推荐的ROS1版本为<strong>Noetic</strong></p>
-<p><img src="https://gitee.com/lee-jesse-jiaze/picture-bed/raw/master/uPic/RolMFR.png" alt="RolMFR"></p>
-<p>按<a target="_blank" rel="noopener" href="http://wiki.ros.org/noetic/Installation/Ubuntu">官方文档</a>安装即可，在这个过程中你可能需要使用<a href="/2021/12/22/WSL%E4%BD%BF%E7%94%A8Windows%E4%B8%AD%E7%9A%84V2rayN/">代理</a>。</p>
-<h3><span id="ceres-solver">Ceres Solver</span></h3>
+<figure>
+<img src="https://gitee.com/lee-jesse-jiaze/picture-bed/raw/master/uPic/RolMFR.png" alt="RolMFR" /><figcaption aria-hidden="true">RolMFR</figcaption>
+</figure>
+<p>按<a target="_blank" rel="noopener" href="http://wiki.ros.org/noetic/Installation/Ubuntu">官方文档</a>安装即可，在这个过程中你可能需要使用<a href="/2021/12/22/WSL使用Windows中的V2rayN/">代理</a>。</p>
+<h3 id="ceres-solver">Ceres Solver</h3>
 <p>直接参考<a target="_blank" rel="noopener" href="http://ceres-solver.org/installation.html">官网</a>安装2.0版本或者最新版均可，如果你想使用CUDA加速Ceres可以参考<a href="/2021/12/22/Install-CUDA/">这篇</a>。</p>
-<p>在完成安装之后VINS-Mono依赖的例如Eigen3/OpenCV/Cmake之类的依赖想均会自动装好。但值得注意的是Noetic自带的是OpenCV4，与<a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics">HKUST-Aerial-Robotics</a>/**<a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics/VINS-Mono">VINS-Mono</a>**中依赖的OpenCV3有所差异，这可能会引起一些问题。</p>
-<h2><span id="编译vins-mono">编译VINS-Mono</span></h2>
-<p>按照<a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics">HKUST-Aerial-Robotics</a>/**<a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics/VINS-Mono">VINS-Mono</a>**中的步骤</p>
+<p>在完成安装之后VINS-Mono依赖的例如Eigen3/OpenCV/Cmake之类的依赖想均会自动装好。但值得注意的是Noetic自带的是OpenCV4，与<a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics">HKUST-Aerial-Robotics</a>/<strong><a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics/VINS-Mono">VINS-Mono</a></strong>中依赖的OpenCV3有所差异，这可能会引起一些问题。</p>
+<h2 id="编译vins-mono">编译VINS-Mono</h2>
+<p>按照<a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics">HKUST-Aerial-Robotics</a>/<strong><a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics/VINS-Mono">VINS-Mono</a></strong>中的步骤</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd ~/catkin_ws/src</span><br><span class="line">git clone https://github.com/HKUST-Aerial-Robotics/VINS-Mono.git</span><br><span class="line">cd ../</span><br><span class="line">catkin_make</span><br><span class="line">source ~/catkin_ws/devel/setup.bash</span><br></pre></td></tr></table></figure>
 <p>这里可能遇到一系列问题</p>
-<h3><span id="ceres相关问题">Ceres相关问题</span></h3>
+<h3 id="ceres相关问题">Ceres相关问题</h3>
 <p>以<code>error: ‘integer_sequence’ is not a member of ‘std’</code>为例</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/include/ceres/internal/integer_sequence_algorithm.h:<span class="number">64</span>:<span class="number">21</span>: error: ‘integer_sequence’ is <span class="keyword">not</span> a member of ‘std’</span><br><span class="line"> <span class="class"><span class="keyword">struct</span> <span class="title">SumImpl</span>&lt;</span>std::integer_sequence&lt;T, N, Ns...&gt;&gt; &#123;</span><br><span class="line">                     ^~~~~~~~~~~~~~~~</span><br><span class="line">/usr/local/include/ceres/internal/integer_sequence_algorithm.h:<span class="number">64</span>:<span class="number">21</span>: error: ‘integer_sequence’ is <span class="keyword">not</span> a member of ‘std’</span><br><span class="line">/usr/local/include/ceres/internal/integer_sequence_algorithm.h:<span class="number">64</span>:<span class="number">46</span>: error: <span class="function">wrong number of <span class="keyword">template</span> <span class="title">arguments</span> <span class="params">(<span class="number">3</span>, should be <span class="number">1</span>)</span></span></span><br><span class="line"><span class="function"> struct SumImpl&lt;std::integer_sequence&lt;T, N, Ns...&gt;&gt; </span>&#123;</span><br><span class="line">                                              ^~~</span><br><span class="line">/usr/local/include/ceres/internal/integer_sequence_algorithm.h:<span class="number">60</span>:<span class="number">8</span>: note: provided <span class="keyword">for</span> ‘<span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">Seq</span>&gt;</span> <span class="class"><span class="keyword">struct</span> <span class="title">ceres</span>:</span>:internal::SumImpl’</span><br><span class="line"> <span class="class"><span class="keyword">struct</span> <span class="title">SumImpl</span>;</span></span><br><span class="line">        ^~~~~~~</span><br></pre></td></tr></table></figure>
 <p>这是因为Ceres需要C++ 14及以上，详见这个<a target="_blank" rel="noopener" href="https://github.com/ceres-solver/ceres-solver/issues/604">issues</a>。只要把VINS-Mono中所有的</p>
@@ -208,47 +210,51 @@
 <p>替换成</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span>(CMAKE_CXX_FLAGS <span class="string">&quot;-std=c++14</span></span><br></pre></td></tr></table></figure>
 <p>即可</p>
-<h3><span id="opencv相关问题">OpenCV相关问题</span></h3>
+<h3 id="opencv相关问题">OpenCV相关问题</h3>
 <p>例如<code>'CV_BGR2RGB' was not declared in this scope</code>，这是由于很多宏定义的名字在OpenCV3和4中不一样，会有很多诸如此类的报错，可以使用vscode中的正则表达式替换批量解决</p>
-<p><img src="https://gitee.com/lee-jesse-jiaze/picture-bed/raw/master/uPic/sccvscode.png" alt="sccvscode"></p>
-<ol>
+<figure>
+<img src="https://gitee.com/lee-jesse-jiaze/picture-bed/raw/master/uPic/sccvscode.png" alt="sccvscode" /><figcaption aria-hidden="true">sccvscode</figcaption>
+</figure>
+<ol type="1">
 <li><strong>遇到OpenCV版本不对</strong></li>
 </ol>
-<p>​	查找：<code>(find_package\(OpenCV).*</code></p>
-<p>​	替换：<code>$1 REQUIRED)</code></p>
-<ol start="2">
+<p>​ 查找：<code>(find_package\(OpenCV).*</code></p>
+<p>​ 替换：<code>$1 REQUIRED)</code></p>
+<ol start="2" type="1">
 <li><strong>CV_GRAY2RGB等</strong></li>
 </ol>
-<p>​	查找: <code>CV_(.*GRAY[^)]*)</code></p>
-<p>​	替换: <code>cv::COLOR_$1</code></p>
-<ol start="3">
+<p>​ 查找: <code>CV_(.*GRAY[^)]*)</code></p>
+<p>​ 替换: <code>cv::COLOR_$1</code></p>
+<ol start="3" type="1">
 <li><strong>CV_AA（不用正则表达式）</strong></li>
 </ol>
-<p>​	查找: <code>CV_AA</code></p>
-<p>​	替换: <code>cv::LINE_AA</code></p>
-<ol start="4">
+<p>​ 查找: <code>CV_AA</code></p>
+<p>​ 替换: <code>cv::LINE_AA</code></p>
+<ol start="4" type="1">
 <li><strong>CV_CALIB_等</strong></li>
 </ol>
-<p>​	查找: <code>CV_(CALIB[^ ,)]*)</code></p>
-<p>​	替换: <code>cv::$1</code></p>
-<ol start="5">
+<p>​ 查找: <code>CV_(CALIB[^ ,)]*)</code></p>
+<p>​ 替换: <code>cv::$1</code></p>
+<ol start="5" type="1">
 <li><strong>CV_LOAD_IMAGE_UNCHANGED、CV_LOAD_IMAGE_GRAYSCALE</strong></li>
 </ol>
-<p>​	查找：<code>CV_LOAD_IMAGE_([^ )]*)</code></p>
-<p>​	替换：<code>cv::IMREAD_$1</code></p>
-<ol start="6">
+<p>​ 查找：<code>CV_LOAD_IMAGE_([^ )]*)</code></p>
+<p>​ 替换：<code>cv::IMREAD_$1</code></p>
+<ol start="6" type="1">
 <li><strong>CV_FONT_HERSHEY_SIMPLEX（不用正则表达式）</strong></li>
 </ol>
-<p>​	查找：<code>CV_FONT_HERSHEY_SIMPLEX</code></p>
-<p>​	替换：<code>cv::FONT_HERSHEY_SIMPLEX</code></p>
-<ol start="7">
+<p>​ 查找：<code>CV_FONT_HERSHEY_SIMPLEX</code></p>
+<p>​ 替换：<code>cv::FONT_HERSHEY_SIMPLEX</code></p>
+<ol start="7" type="1">
 <li><strong>No such file or directory <code>#include&lt;opencv/cv.h&gt;</code>：</strong></li>
 </ol>
-<p>​	在对应文件添加</p>
+<p>​ 在对应文件添加</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/imgproc/imgproc_c.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/highgui/highgui_c.h&gt;</span></span></span><br></pre></td></tr></table></figure>
 <p>完成编译后按官方文档运行即可</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd ~/catkin_ws/devel/</span><br><span class="line">source ~/catkin_ws/devel/setup.bash</span><br><span class="line">roslaunch vins_estimator euroc.launch </span><br><span class="line">roslaunch vins_estimator vins_rviz.launch</span><br><span class="line">rosbag play YOUR_PATH_TO_DATASET/MH_01_easy.bag </span><br></pre></td></tr></table></figure>
-<p><img src="https://gitee.com/lee-jesse-jiaze/picture-bed/raw/master/uPic/IMG_2402.png" alt="IMG_2402"></p>
+<figure>
+<img src="https://gitee.com/lee-jesse-jiaze/picture-bed/raw/master/uPic/IMG_2402.png" alt="IMG_2402" /><figcaption aria-hidden="true">IMG_2402</figcaption>
+</figure>
 
 </div> 
 
