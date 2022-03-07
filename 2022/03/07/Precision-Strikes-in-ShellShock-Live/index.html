@@ -182,7 +182,7 @@
 <li>重力加速度（像素<span class="math inline">\(/\text{s}^2\)</span>）</li>
 <li>速度（像素<span class="math inline">\(/\text{s}\)</span>）和力度的对应关系</li>
 </ul>
-<p>关于这两点，大佬在steam上的一篇指南<a target="_blank" rel="noopener" href="https://steamcommunity.com/sharedfiles/filedetails/?id=1327582953">Perfect accuracy with CALCULATIONS</a>中讲解的十分详细，并且通过测量炮弹飞行时间等一系列方法计算出了游戏中的参数，并且给出了最终的公式 <span class="math display">\[
+<p>关于这两点，ilyaki大佬在steam上的一篇指南<a target="_blank" rel="noopener" href="https://steamcommunity.com/sharedfiles/filedetails/?id=1327582953">Perfect accuracy with CALCULATIONS</a>中讲解的十分详细，并且通过测量炮弹飞行时间等一系列方法计算出了游戏中的参数，并且给出了最终的公式 <span class="math display">\[
 \text{power}=\frac {-2} {gq} * \sqrt{\frac {-g*s_x^2} {2\cos^2\Theta*(\tan\Theta*s_x-s_y)}}
 \]</span> 其中<span class="math inline">\(s_x\)</span>为水平距离，<span class="math inline">\(s_y\)</span>为垂直距离，<span class="math inline">\(\Theta\)</span>为发射角度，<span class="math inline">\(g=-379.106\)</span>为重力加速度，<span class="math inline">\(q=0.0518718\)</span>为常数。</p>
 <p>有了这个公式就可以通过<strong>起点</strong>与<strong>终点</strong>的坐标，在给定<strong>发射角度</strong>的情况下，给出应该使用的<strong>力度</strong>。</p>
