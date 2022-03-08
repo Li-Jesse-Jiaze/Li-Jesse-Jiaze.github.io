@@ -5,13 +5,25 @@ import pynput.keyboard as kb
 import pynput.mouse as ms
 import time
 import platform
+from os import system
 
 keys = kb.Controller()
 mouse = ms.Controller()
-os = platform.system()
+os_name = platform.system()
 
 global set_wind
 set_wind = ""
+
+
+# define our clear function
+def clear():
+    # for windows
+    if os_name == 'Windows':
+        _ = system('cls')
+
+    # for mac and linux(here, os.name is 'posix')
+    else:
+        _ = system('clear')
 
 
 # calculate velocity
@@ -75,10 +87,10 @@ def calcOptimal(x_diff, y_diff, wind):
                 bestAngle = possibleAngle
         except Exception as e:
             pass
-
-    print("Smallest Velocity")
-    print("Velocity = " + str(smallestVelocity))
-    print("Angle = " + str(bestAngle))
+    clear()
+    print("\n------ Smallest -----")
+    print("Power\tAngle")
+    print("{:.2f}\t {:d}".format(smallestVelocity, bestAngle))
     velocity = smallestVelocity
     angle = bestAngle
 
@@ -97,9 +109,9 @@ def calcHighestBelow100(x_diff, y_diff, wind):
         if v0 < 100:
             break
 
-    print("Highest Angle with power below 100")
-    print("Velocity = " + str(v0))
-    print("Angle = " + str(90 - possibleAngle))
+    print("\n------ Highest ------")
+    print("Power\tAngle")
+    print("{:.2f}\t {:d}".format(v0, 90 - possibleAngle))
     highVelocity = v0
     highAngle = 90 - possibleAngle
 
@@ -205,7 +217,8 @@ def readNumber(key):
     global set_wind
     # print(key.vk)
     # print(key.char)
-    if os == "Linux":
+    print(os_name)
+    if os_name == "Linux":
         if key == kb.Key.enter:
             print("ENTER pressed")
             return False
@@ -234,6 +247,6 @@ def readNumber(key):
 
 if __name__ == "__main__":
     with keyboard.GlobalHotKeys(
-            {'<alt>+P': PlayerLocation, '<alt>+E': EnemyLocation,
+            {'P': PlayerLocation, 'E': EnemyLocation,
              '<alt>+W': readWind}) as h:
         h.join()
