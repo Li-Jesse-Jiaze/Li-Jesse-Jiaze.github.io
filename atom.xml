@@ -115,13 +115,13 @@
     
     <category term="Tutorials" scheme="http://keep-a.live/tags/Tutorials/"/>
     
-    <category term="WSL2" scheme="http://keep-a.live/tags/WSL2/"/>
-    
     <category term="Notes" scheme="http://keep-a.live/tags/Notes/"/>
     
     <category term="SLAM" scheme="http://keep-a.live/tags/SLAM/"/>
     
     <category term="graduation project" scheme="http://keep-a.live/tags/graduation-project/"/>
+    
+    <category term="WSL2" scheme="http://keep-a.live/tags/WSL2/"/>
     
   </entry>
   
