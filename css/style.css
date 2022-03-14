@@ -481,7 +481,7 @@ body {
   color: #000;
 }
 .post-gallery-item .post-img {
-  width: 50%;
+  width: 40%;
 }
 .post-gallery-item a {
   background-image: linear-gradient(#fff, #fff), linear-gradient(#000, #000);
@@ -501,7 +501,7 @@ body {
     width: 100%;
   }
   .post-gallery-item .post-img {
-    width: 100%;
+    width: 80%;
     margin-top: 0.75rem;
   }
 }

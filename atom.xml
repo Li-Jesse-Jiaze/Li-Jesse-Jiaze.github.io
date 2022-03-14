@@ -6,7 +6,7 @@
   <link href="http://keep-a.live/atom.xml" rel="self"/>
   
   <link href="http://keep-a.live/"/>
-  <updated>2022-03-09T13:15:29.903Z</updated>
+  <updated>2022-03-14T13:11:26.939Z</updated>
   <id>http://keep-a.live/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Updated Logo of the Blog</title>
+    <link href="http://keep-a.live/2022/03/14/Updated-Logo-of-the-Blog/"/>
+    <id>http://keep-a.live/2022/03/14/Updated-Logo-of-the-Blog/</id>
+    <published>2022-03-14T09:36:04.000Z</published>
+    <updated>2022-03-14T13:11:26.939Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p style="text-align: center"><img src="https://gitee.com/lee-jesse-jiaze/picture-bed/raw/master/uPic/bbbird.gif" style="width:50%;" /></p><p>It's time to select a new logo for the website. A small bird from <a href="https://itch.io/profile/ma9ici4n">ma9ici4n</a> would be perfect as a blog logo for someone who is extremely fond of birds. (btw I think birds are very cute creatures and even my <a href="/2021/12/07/Liwenjian-Typora-theme/">Typora theme</a> was inspired by a painting of a bird.)</p><p>This reminds me of the old computer version of QQ that had a feature called <em>QQ Pet</em> where you could feed it, give it a bath or something eles. I thought it was really funny when I was a kid, but it's long since become a tear in the eye of the times(刻のなみだ).</p><p><strong>TODO:</strong> It may be updated later with some interactive effects, such as feeding it when the mouse is hovered over or something.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;
+&lt;p style=&quot;text-align: center&quot;&gt;
+&lt;img src=&quot;https://gitee.com/lee-jesse-jiaze/picture-bed/ra</summary>
+      
+    
+    
+    
+    
+    <category term="painting" scheme="http://keep-a.live/tags/painting/"/>
+    
+  </entry>
   
   <entry>
     <title>在炮弹冲击（ShellShock Live）中进行精准打击</title>
@@ -486,13 +510,13 @@
     <category term="gallery" scheme="http://keep-a.live/categories/gallery/"/>
     
     
-    <category term="markdown" scheme="http://keep-a.live/tags/markdown/"/>
-    
     <category term="theme" scheme="http://keep-a.live/tags/theme/"/>
     
-    <category term="Typora" scheme="http://keep-a.live/tags/Typora/"/>
-    
     <category term="css" scheme="http://keep-a.live/tags/css/"/>
+    
+    <category term="markdown" scheme="http://keep-a.live/tags/markdown/"/>
+    
+    <category term="Typora" scheme="http://keep-a.live/tags/Typora/"/>
     
     <category term="Projects" scheme="http://keep-a.live/tags/Projects/"/>
     
