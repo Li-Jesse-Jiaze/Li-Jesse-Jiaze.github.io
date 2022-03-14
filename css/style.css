@@ -360,7 +360,7 @@ body {
   }
   .header-inner .site-brand-container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     width: 50%;
   }
   .header-inner .site-nav {
