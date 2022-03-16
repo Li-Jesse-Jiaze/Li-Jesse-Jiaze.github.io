@@ -175,20 +175,18 @@
 </div>
     <div class="post-content">
     <script src="/assets/js/DPlayer.min.js"> </script><p>炮弹冲击(ShellShock Live)是一款战略类多人在线火炮游戏，类似于小时候4399上的弹弹堂。众所周知，这类游戏有着真实的物理引擎，所以其打出炮弹的轨迹当然也是可以计算的。</p>
-<h2 id="🚢-模型">🚢 模型</h2>
-<p>炮弹的飞行就是一个简单的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%B9%B3%E6%8A%9B%E8%BF%90%E5%8A%A8">抛体运动</a>（在不考虑风力的情况下）</p>
+<h2 id="模型">🚢 模型</h2>
+<p>炮弹的飞行就是一个简单的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/平抛运动">抛体运动</a>（在不考虑风力的情况下）</p>
 <p>而问题就在于求出游戏中的</p>
 <ul>
-<li>重力加速度（像素$/\text{s}^2$）</li>
-<li>速度（像素$/\text{s}$）和力度的对应关系</li>
+<li>重力加速度（像素<span class="math inline">\(/\text{s}^2\)</span>）</li>
+<li>速度（像素<span class="math inline">\(/\text{s}\)</span>）和力度的对应关系</li>
 </ul>
-<p>关于这两点，ilyaki大佬在steam上的一篇指南<a target="_blank" rel="noopener" href="https://steamcommunity.com/sharedfiles/filedetails/?id=1327582953">Perfect accuracy with CALCULATIONS</a>中讲解的十分详细，并且通过测量炮弹飞行时间等一系列方法计算出了游戏中的参数，并且给出了最终的公式<br>
-$$<br>
-\text{power}=\frac {-2} {gq} * \sqrt{\frac {-g<em>s_x^2} {2\cos^2\Theta</em>(\tan\Theta*s_x-s_y)}}<br>
-$$<br>
-其中$s_x$为水平距离，$s_y$为垂直距离，$\Theta$为发射角度，$g=-379.106$为重力加速度，$q=0.0518718$为常数。</p>
+<p>关于这两点，ilyaki大佬在steam上的一篇指南<a target="_blank" rel="noopener" href="https://steamcommunity.com/sharedfiles/filedetails/?id=1327582953">Perfect accuracy with CALCULATIONS</a>中讲解的十分详细，并且通过测量炮弹飞行时间等一系列方法计算出了游戏中的参数，并且给出了最终的公式 <span class="math display">\[
+\text{power}=\frac {-2} {gq} * \sqrt{\frac {-g*s_x^2} {2\cos^2\Theta*(\tan\Theta*s_x-s_y)}}
+\]</span> 其中<span class="math inline">\(s_x\)</span>为水平距离，<span class="math inline">\(s_y\)</span>为垂直距离，<span class="math inline">\(\Theta\)</span>为发射角度，<span class="math inline">\(g=-379.106\)</span>为重力加速度，<span class="math inline">\(q=0.0518718\)</span>为常数。</p>
 <p>有了这个公式就可以通过<strong>起点</strong>与<strong>终点</strong>的坐标，在给定<strong>发射角度</strong>的情况下，给出应该使用的<strong>力度</strong>。</p>
-<h2 id="⚙️程序">⚙️程序</h2>
+<h2 id="程序">⚙️程序</h2>
 <p>程序主要参考了Github上项目<a target="_blank" rel="noopener" href="https://github.com/henrydatei">henrydatei</a>/<strong><a target="_blank" rel="noopener" href="https://github.com/henrydatei/ShellShockLiveAimbot">ShellShockLiveAimbot</a></strong></p>
 <p>首先使用上面的公式计算力度</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># calculate velocity</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calcVelocity</span>(<span class="params">x_diff, y_diff, angle</span>):</span></span><br><span class="line">    <span class="comment"># from https://steamcommunity.com/sharedfiles/filedetails/?id=1327582953</span></span><br><span class="line">    g = -<span class="number">379.106</span></span><br><span class="line">    q = <span class="number">0.0518718</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        v0 = -<span class="number">2</span> / (g * q) * math.sqrt((-g * x_diff * x_diff) / (</span><br><span class="line">            <span class="number">2</span> * math.cos(math.radians(angle)) *</span><br><span class="line">            math.cos(math.radians(angle)) * (</span><br><span class="line">            math.tan(math.radians(angle)) * x_diff - y_diff)))</span><br><span class="line">    <span class="keyword">except</span> ZeroDivisionError:</span><br><span class="line">        v0 = <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> v0</span><br></pre></td></tr></table></figure>
@@ -198,7 +196,7 @@ $$<br>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calcOptimal</span>(<span class="params">x_diff, y_diff, wind</span>):</span></span><br><span class="line">    smallestVelocity = <span class="number">100</span></span><br><span class="line">    bestAngle = <span class="number">0</span></span><br><span class="line">    <span class="keyword">global</span> velocity</span><br><span class="line">    <span class="keyword">global</span> angle</span><br><span class="line">    <span class="keyword">for</span> possibleAngle <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">90</span>):</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">if</span> wind == <span class="number">0</span>:</span><br><span class="line">                v0 = calcVelocity(x_diff, y_diff, possibleAngle)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                v0 = calcVelocityWithWind(x_diff, y_diff,</span><br><span class="line">                possibleAngle, wind)</span><br><span class="line">            <span class="keyword">if</span> v0 &lt; smallestVelocity:</span><br><span class="line">                smallestVelocity = v0</span><br><span class="line">                bestAngle = possibleAngle</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Smallest Velocity&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Velocity = &quot;</span> + <span class="built_in">str</span>(smallestVelocity))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Angle = &quot;</span> + <span class="built_in">str</span>(bestAngle))</span><br><span class="line">    velocity = smallestVelocity</span><br><span class="line">    angle = bestAngle</span><br></pre></td></tr></table></figure>
 <p>另外需要做的就是获取你和目标的坐标，这里使用第三方库<code>pynput</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">posPlayer</span>(<span class="params">x, y, button, pressed</span>):</span></span><br><span class="line">    <span class="keyword">if</span> pressed:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Your position: &quot;</span> + <span class="built_in">str</span>(x) + <span class="string">&quot;, &quot;</span> + <span class="built_in">str</span>(y))</span><br><span class="line">        <span class="keyword">global</span> YourX</span><br><span class="line">        YourX = x</span><br><span class="line">        <span class="keyword">global</span> YourY</span><br><span class="line">        YourY = y</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
-<p>完整代码<a href="%5Cshellshock.py">下载</a></p>
+<p>完整代码<a href="\shellshock.py">下载</a></p>
 <p><strong>Requirement</strong>：</p>
 <ul>
 <li>Python 3</li>
@@ -207,7 +205,7 @@ $$<br>
 </ul>
 <p>运行以下命令即可安装： <code>pip install pynput pyautogui</code></p>
 <p><strong>运行</strong>：</p>
-<ol>
+<ol type="1">
 <li>使用Steam打开游戏并使用窗口化运行</li>
 <li>命令行中使用<code>python shellshock.py</code>运行脚本</li>
 <li>按提示输入窗口宽度（以调整程序中的重力加速度）</li>
@@ -215,7 +213,7 @@ $$<br>
 <li>键盘按<kbd>e</kbd>，使用鼠标点击目标位置</li>
 <li>命令行会给你弹出两个力度和角度，分别对应最平抛和最高抛，并且自动帮你点击高抛（不太准自己微调一下）</li>
 </ol>
-<h2 id="⚠️注意事项">⚠️注意事项</h2>
+<h2 id="注意事项">⚠️注意事项</h2>
 <p>这属于技术型作弊，但依然是作弊行为，请不要在线上模式中使用。你可以用它来精准打击你的朋友，起到出其不意的效果，或者在单人模式中瞄准boss。</p>
 <p>Only tested on Windows. Not fully tested, but should work for MacOS/Linux. (You may face some problems caused by system permissions in macOS, especially when using <code>pyautogui</code>.)</p>
 

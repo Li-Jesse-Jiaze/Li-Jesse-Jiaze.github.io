@@ -289,49 +289,14 @@
   </url>
   
   <url>
-    <loc>http://keep-a.live/tags/Tutorials/</loc>
-    <lastmod>2022-03-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://keep-a.live/tags/Teamspeak/</loc>
-    <lastmod>2022-03-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://keep-a.live/tags/Server/</loc>
-    <lastmod>2022-03-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://keep-a.live/tags/WSL2/</loc>
-    <lastmod>2022-03-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://keep-a.live/tags/CUDA/</loc>
-    <lastmod>2022-03-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://keep-a.live/tags/Windows/</loc>
-    <lastmod>2022-03-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://keep-a.live/tags/Notes/</loc>
+    <lastmod>2022-03-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://keep-a.live/tags/Tutorials/</loc>
     <lastmod>2022-03-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -346,6 +311,27 @@
   
   <url>
     <loc>http://keep-a.live/tags/graduation-project/</loc>
+    <lastmod>2022-03-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://keep-a.live/tags/WSL2/</loc>
+    <lastmod>2022-03-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://keep-a.live/tags/Teamspeak/</loc>
+    <lastmod>2022-03-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://keep-a.live/tags/Server/</loc>
     <lastmod>2022-03-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -380,6 +366,13 @@
   </url>
   
   <url>
+    <loc>http://keep-a.live/tags/ShellShock-Live/</loc>
+    <lastmod>2022-03-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://keep-a.live/tags/markdown/</loc>
     <lastmod>2022-03-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -401,7 +394,21 @@
   </url>
   
   <url>
-    <loc>http://keep-a.live/tags/ShellShock-Live/</loc>
+    <loc>http://keep-a.live/tags/painting/</loc>
+    <lastmod>2022-03-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://keep-a.live/tags/CUDA/</loc>
+    <lastmod>2022-03-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://keep-a.live/tags/Windows/</loc>
     <lastmod>2022-03-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -409,13 +416,6 @@
   
   <url>
     <loc>http://keep-a.live/tags/%E8%A7%86%E8%A7%89SLAM%E5%8D%81%E5%9B%9B%E8%AE%B2/</loc>
-    <lastmod>2022-03-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://keep-a.live/tags/painting/</loc>
     <lastmod>2022-03-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -436,20 +436,6 @@
   </url>
   
   <url>
-    <loc>http://keep-a.live/tags/zyz/</loc>
-    <lastmod>2022-03-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://keep-a.live/tags/photography/</loc>
-    <lastmod>2022-03-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://keep-a.live/tags/Vincent/</loc>
     <lastmod>2022-03-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -458,6 +444,20 @@
   
   <url>
     <loc>http://keep-a.live/tags/van-Gogh/</loc>
+    <lastmod>2022-03-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://keep-a.live/tags/zyz/</loc>
+    <lastmod>2022-03-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://keep-a.live/tags/photography/</loc>
     <lastmod>2022-03-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
