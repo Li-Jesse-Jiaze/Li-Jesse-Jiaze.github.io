@@ -9,9 +9,11 @@ import platform
 
 keys = kb.Controller()
 os_name = platform.system()
-
+resize_rate = 1
 
 # define our clear function
+
+
 def clear():
     # for windows
     if os_name == 'Windows':
@@ -25,11 +27,11 @@ def clear():
 # calculate velocity
 def calcVelocity(x_diff, y_diff, angle):
     # from https://steamcommunity.com/sharedfiles/filedetails/?id=1327582953
-    g = -379.106
+    g = -379.106 / resize_rate
     q = 0.0518718
     try:
         v0 = -2 / (g * q) * math.sqrt((-g * x_diff * x_diff) / (
-                2 * math.cos(math.radians(angle)) * math.cos(math.radians(angle)) * (
+            2 * math.cos(math.radians(angle)) * math.cos(math.radians(angle)) * (
                 math.tan(math.radians(angle)) * x_diff - y_diff)))
     except ZeroDivisionError:
         v0 = 0
@@ -73,7 +75,7 @@ def calcHighestBelow100(x_diff, y_diff):
     highAngle = 90 - possibleAngle
     time.sleep(1)
     is_left = (int(YourX > EnemyX) - 0.5) * 2
-    alpha = 10.0 / 3
+    alpha = 10.1 / 3 / resize_rate
     pyautogui.click(YourX - alpha * is_left * highVelocity * math.cos(math.radians(highAngle)),
                     YourY - alpha * highVelocity * math.sin(math.radians(highAngle)), button='left')
     print("\nThe highest trajectory have been automatically selected!\n(automatic selection may have some errors, please check and fine tune)")
@@ -148,6 +150,8 @@ def EnemyLocation():
 
 
 if __name__ == "__main__":
+    window_width = float(input("please input your window width(for example 1920):"))
+    resize_rate = 1920.0 / window_width
     print("locate your tank(p)/target(e)")
-    with kb.GlobalHotKeys({'P': PlayerLocation, 'E': EnemyLocation, '<ctrl>+C':exit}) as h:
+    with kb.GlobalHotKeys({'P': PlayerLocation, 'E': EnemyLocation, '<ctrl>+C': exit}) as h:
         h.join()
