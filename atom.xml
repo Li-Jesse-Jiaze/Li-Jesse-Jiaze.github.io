@@ -6,7 +6,7 @@
   <link href="http://keep-a.live/atom.xml" rel="self"/>
   
   <link href="http://keep-a.live/"/>
-  <updated>2022-03-15T14:23:58.108Z</updated>
+  <updated>2022-03-25T11:39:43.712Z</updated>
   <id>http://keep-a.live/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Epidemic Closed Schools Sakura</title>
+    <link href="http://keep-a.live/2022/03/25/Epidemic-Closed-Schools-Sakura/"/>
+    <id>http://keep-a.live/2022/03/25/Epidemic-Closed-Schools-Sakura/</id>
+    <published>2022-03-25T11:34:22.000Z</published>
+    <updated>2022-03-25T11:39:43.712Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>The photograph was taken during the closure of Tongji University.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;The photograph was taken during the closure of Tongji University.&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="gallery" scheme="http://keep-a.live/categories/gallery/"/>
+    
+    
+    <category term="life" scheme="http://keep-a.live/tags/life/"/>
+    
+    <category term="photography" scheme="http://keep-a.live/tags/photography/"/>
+    
+    <category term="Tongji University" scheme="http://keep-a.live/tags/Tongji-University/"/>
+    
+  </entry>
   
   <entry>
     <title>Updated the Website Logo</title>
