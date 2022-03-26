@@ -119,24 +119,6 @@
   </url>
   
   <url>
-    <loc>http://keep-a.live/tiger.html</loc>
-    
-    <lastmod>2022-02-15</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://keep-a.live/2022/01/31/Happy-Lunar-New-Year-Tiger/</loc>
-    
-    <lastmod>2022-01-31</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://keep-a.live/2021/12/22/WSL2-use-proxy-of-Windows/</loc>
     
     <lastmod>2021-12-24</lastmod>
