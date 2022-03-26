@@ -6,7 +6,7 @@
   <link href="http://keep-a.live/atom.xml" rel="self"/>
   
   <link href="http://keep-a.live/"/>
-  <updated>2022-03-26T04:18:40.466Z</updated>
+  <updated>2022-03-26T04:34:47.052Z</updated>
   <id>http://keep-a.live/</id>
   
   <author>
@@ -17,19 +17,22 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Epidemic Closed Schools Sakura</title>
+    <title>Sakura in Closed School</title>
     <link href="http://keep-a.live/2022/03/25/Epidemic-Closed-Schools-Sakura/"/>
     <id>http://keep-a.live/2022/03/25/Epidemic-Closed-Schools-Sakura/</id>
     <published>2022-03-25T11:34:22.000Z</published>
-    <updated>2022-03-26T04:18:40.466Z</updated>
+    <updated>2022-03-26T04:34:47.052Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><p>The photograph was taken during the closure of Tongji University.</p>]]></content>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><table><thead><tr><th><strong>Camera parameters</strong></th><th><strong>Value</strong></th></tr></thead><tbody><tr><td>Aperture factor</td><td>5</td></tr><tr><td>Exposure mode</td><td>auto</td></tr><tr><td>Exposure offset</td><td>0</td></tr><tr><td>Exposure procedure</td><td>normal</td></tr><tr><td>Exposure time</td><td>1/800</td></tr><tr><td>Flash</td><td>off</td></tr><tr><td>Focal length</td><td>50</td></tr><tr><td>ISO</td><td>200</td></tr><tr><td>Lens model</td><td>LUMIX S 50/F1.8</td></tr><tr><td>White balance</td><td>auto</td></tr></tbody></table>]]></content>
     
     
       
       
-    <summary type="html">&lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;The photograph was taken during the closure of Tongji University.&lt;/p&gt;
-</summary>
+    <summary type="html">&lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;strong&gt;Camera parameters&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;Value&lt;/strong</summary>
       
     
     
