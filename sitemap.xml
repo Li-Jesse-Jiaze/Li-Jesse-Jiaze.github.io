@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://keep-a.live/2021/12/22/Install-CUDA/</loc>
+    
+    <lastmod>2022-03-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://keep-a.live/2022/02/15/How-to-Setup-a-Teamspeak-Server-with-Docker/</loc>
+    
+    <lastmod>2022-03-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://keep-a.live/2022/03/27/Titanic-Data-Vi/</loc>
     
     <lastmod>2022-03-27</lastmod>
@@ -92,15 +110,6 @@
   </url>
   
   <url>
-    <loc>http://keep-a.live/2021/12/22/Install-CUDA/</loc>
-    
-    <lastmod>2022-02-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://keep-a.live/about/index.html</loc>
     
     <lastmod>2022-02-16</lastmod>
@@ -113,15 +122,6 @@
     <loc>http://keep-a.live/2022/02/16/Share-a-painting-I-really-like/</loc>
     
     <lastmod>2022-02-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://keep-a.live/2022/02/15/How-to-Setup-a-Teamspeak-Server-with-Docker/</loc>
-    
-    <lastmod>2022-02-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
