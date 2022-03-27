@@ -14,7 +14,7 @@
 
 
 
-<title>Sakura in Closed School | keep alive</title>
+<title>Titanic Data Sankey | keep alive</title>
 
 
 
@@ -137,20 +137,8 @@
             
                 
                     <span class="post-tag">
-                        <a href="/tags/life/">
-                            life
-                        </a>
-                    </span>    
-                
-                    <span class="post-tag">
-                        <a href="/tags/photography/">
-                            photography
-                        </a>
-                    </span>    
-                
-                    <span class="post-tag">
-                        <a href="/tags/Tongji-University/">
-                            Tongji University
+                        <a href="/tags/zyz/">
+                            zyz
                         </a>
                     </span>    
                            
@@ -159,71 +147,146 @@
         <div class="post-title">
             
             
-                Sakura in Closed School
+                Titanic Data Sankey
             
             
         </div>
         <span class="post-date">
-            2022, 03, 25
+            2022, 03, 27
         </span>
     </div>
     <div class="post-img">
         
-            <img src="https://i.imgur.com/CbNLc71.jpg" alt="featured_image">
+            <div class="h-line-primary"></div>
               
     </div>
 </div>
     <div class="post-content">
-    <script src="/assets/js/DPlayer.min.js"> </script><table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Camera parameters</th>
-<th style="text-align: center;">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Aperture factor</td>
-<td style="text-align: center;">5</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Exposure mode</td>
-<td style="text-align: center;">auto</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Exposure offset</td>
-<td style="text-align: center;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Exposure procedure</td>
-<td style="text-align: center;">normal</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Exposure time</td>
-<td style="text-align: center;">1/800</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Flash</td>
-<td style="text-align: center;">off</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Focal length</td>
-<td style="text-align: center;">50</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">ISO</td>
-<td style="text-align: center;">200</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Lens model</td>
-<td style="text-align: center;">LUMIX S 50/F1.8</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">White balance</td>
-<td style="text-align: center;">auto</td>
-</tr>
-</tbody>
-</table>
+    <script src="/assets/js/DPlayer.min.js"> </script>
+<div id="container" style="height: 400%"></div>
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.3.1/dist/echarts.min.js"></script>
+        <!-- Uncomment this line if you want to dataTool extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.3.1/dist/extension/dataTool.min.js"></script>
+        -->
+        <!-- Uncomment this line if you want to use gl extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
+        -->
+        <!-- Uncomment this line if you want to echarts-stat extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat@latest/dist/ecStat.min.js"></script>
+        -->
+        <!-- Uncomment this line if you want to use map
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.3.1/map/js/china.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.3.1/map/js/world.js"></script>
+        -->
+        <!-- Uncomment these two lines if you want to use bmap extension
+        <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=<Your Key Here>"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@{{version}}/dist/extension/bmap.min.js"></script>
+        -->
+
+        <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+var data;
+data = {"nodes": [
+    {"name": "1st"},
+    {"name": "2nd"},
+    {"name": "3rd"},
+    {"name": "male"},
+    {"name": "female"},
+    {"name": "survived = 1"},
+    {"name": "survived = 0"},
+ ],
+ "links": [
+    {"source": "1st", "target": "survived = 1", "value": 200},
+    {"source": "1st", "target": "survived = 0", "value": 123},
+    {"source": "2nd", "target": "survived = 1", "value": 119},
+    {"source": "2nd", "target": "survived = 0", "value": 158},
+    {"source": "3rd", "target": "survived = 1", "value": 181},
+    {"source": "3rd", "target": "survived = 0", "value": 528},
+    // {"source": "1st", "target": "male", "value": 179},
+    // {"source": "1st", "target": "female", "value": 143},
+    // {"source": "2nd", "target": "male", "value": 171},
+    // {"source": "2nd", "target": "female", "value": 106},
+    // {"source": "3rd", "target": "male", "value": 493},
+    // {"source": "3rd", "target": "female", "value": 216},
+    {"source": "survived = 1", "target": "male", "value": 161},
+    {"source": "survived = 0", "target": "male", "value": 682},
+    {"source": "survived = 1", "target": "female", "value": 338},
+    {"source": "survived = 0", "target": "female", "value": 127}
+ ]}
+
+var option;
+
+option = {
+      tooltip: {
+        trigger: 'item',
+        triggerOn: 'mousemove'
+      },
+      series: [
+        {
+          type: 'sankey',
+          data: data.nodes,
+          links: data.links,
+          emphasis: {
+            focus: 'adjacency'
+          },
+          levels: [
+            {
+              depth: 0,
+              itemStyle: {
+                color: '#fbb4ae'
+              },
+              lineStyle: {
+                color: 'source',
+                opacity: 0.6
+              }
+            },
+            {
+              depth: 1,
+              itemStyle: {
+                color: '#b3cde3'
+              },
+              lineStyle: {
+                color: 'source',
+                opacity: 0.6
+              }
+            },
+            {
+              depth: 2,
+              itemStyle: {
+                color: '#ccebc5'
+              },
+              lineStyle: {
+                color: 'source',
+                opacity: 0.6
+              }
+            },
+            {
+              depth: 3,
+              itemStyle: {
+                color: '#decbe4'
+              },
+              lineStyle: {
+                color: 'source',
+                opacity: 0.6
+              }
+            }
+          ],
+          lineStyle: {
+            curveness: 0.5
+          }
+        }
+      ]
+    }
+
+if (option && typeof option === 'object') {
+    myChart.setOption(option);
+}
+</script>
+
 
 </div> 
 
@@ -235,17 +298,12 @@
     <nav class="post-nav">
         <div class="prev-item">
            
-                <div class="icon arrow-left"></div>
-                <div class="post-link">
-                    <a href="/2022/03/27/Titanic-Data-Vi/">Prev</a>
-                </div>
-            
         </div>
         <div class="next-item">
             
                 <div class="icon arrow-right"></div>
                 <div class="post-link">
-                  <a href="/2022/03/14/Updated-Logo-of-the-Blog/">Next</a>  
+                  <a href="/2022/03/25/Epidemic-Closed-Schools-Sakura/">Next</a>  
                 </div>  
             
         </div>
