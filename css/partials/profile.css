@@ -2,6 +2,7 @@
   margin-top: $margin-primary;
   display: flex;
   flex-direction: row-reverse;
+  justify-content: space-between;
 }
 .profile .profile-content {
   width: 50%;
@@ -20,7 +21,7 @@
   margin-bottom: $margin-m-1;
 }
 .profile .profile-image {
-  width: 50%;
+  height: 50%;
 }
 @media (max-width: 480px) {
   .profile {

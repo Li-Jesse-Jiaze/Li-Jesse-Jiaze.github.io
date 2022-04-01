@@ -32,6 +32,8 @@
     
     <link rel="stylesheet" href="/css/style.css">
     
+    <link rel="stylesheet" href="/atropos/atropos.css">
+    
 
 
 
@@ -39,6 +41,8 @@
     <!-- scripts list from _config.yml -->
     
     <script src="/js/frame.js"></script>
+    
+    <script src="/atropos/atropos.js"></script>
     
 
 
@@ -137,14 +141,20 @@
             
                 
                     <span class="post-tag">
-                        <a href="/tags/Notes/">
-                            Notes
+                        <a href="/tags/Tutorials/">
+                            Tutorials
                         </a>
                     </span>    
                 
                     <span class="post-tag">
-                        <a href="/tags/Tutorials/">
-                            Tutorials
+                        <a href="/tags/WSL2/">
+                            WSL2
+                        </a>
+                    </span>    
+                
+                    <span class="post-tag">
+                        <a href="/tags/Notes/">
+                            Notes
                         </a>
                     </span>    
                 
@@ -157,12 +167,6 @@
                     <span class="post-tag">
                         <a href="/tags/graduation-project/">
                             graduation project
-                        </a>
-                    </span>    
-                
-                    <span class="post-tag">
-                        <a href="/tags/WSL2/">
-                            WSL2
                         </a>
                     </span>    
                            
@@ -186,7 +190,7 @@
     </div>
 </div>
     <div class="post-content">
-    <script src="/assets/js/DPlayer.min.js"> </script><p>众所周知在WSLg发布之后，WSL成为了最好的Linux桌面版（bushi）。本文将记录WSL2(Ubuntu)中<strong>VINS-Mono</strong>的配置过程。</p>
+    <p>众所周知在WSLg发布之后，WSL成为了最好的Linux桌面版（bushi）。本文将记录WSL2(Ubuntu)中<strong>VINS-Mono</strong>的配置过程。</p>
 <p>VINS-Mono作为17年的项目，依赖的环境版本都很早，所以现在想要配置需要做一些调整。对于这种旧项目的复现，我认为原则应该是按照新的版本调整之前的代码，而非使用老版本的依赖项。</p>
 <h2 id="安装依赖项">安装依赖项</h2>
 <h3 id="ros">ROS</h3>

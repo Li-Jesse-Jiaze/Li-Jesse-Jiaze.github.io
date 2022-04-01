@@ -416,6 +416,7 @@ body {
   flex-wrap: nowrap;
   margin-top: 0.75rem;
   align-items: top;
+  transition: all 0.2s ease-in-out;
 }
 .post-list-item .post-title {
   flex-grow: 1;
@@ -436,6 +437,9 @@ body {
   color: #000;
   line-height: 1.5rem;
   color: #bababa;
+}
+.post-list-item:hover {
+  transform: scale(1.02);
 }
 @media (max-width: 480px) {
   .post-list-item {
@@ -460,6 +464,7 @@ body {
   display: flex;
   margin-top: 3.5rem;
   margin-bottom: 0.75rem;
+  transition: all 0.2s ease-in-out;
 }
 .post-gallery-item .post-info {
   margin-right: 1.5rem;
@@ -492,6 +497,9 @@ body {
 }
 .post-gallery-item a:hover {
   background-size: 0 1px, 100% 1px;
+}
+.post-gallery-item:hover {
+  transform: scale(1.02);
 }
 @media (max-width: 480px) {
   .post-gallery-item {
@@ -548,6 +556,7 @@ body {
   margin-top: 3.5rem;
   display: flex;
   flex-direction: row-reverse;
+  justify-content: space-between;
 }
 .profile .profile-content {
   width: 50%;
@@ -583,7 +592,7 @@ body {
   color: #000;
 }
 .profile .profile-image {
-  width: 50%;
+  height: 50%;
 }
 @media (max-width: 480px) {
   .profile {

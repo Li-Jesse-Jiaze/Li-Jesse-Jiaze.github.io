@@ -8,6 +8,7 @@
   display: flex;
   margin-top: $margin-primary;
   margin-bottom: $margin-m-1;
+  transition: all 0.2s ease-in-out;
 }
 .post-gallery-item .post-info {
   margin-right: $margin-l-0;
@@ -20,6 +21,9 @@
 }
 .post-gallery-item .post-img {
   width: 40%;
+}
+.post-gallery-item:hover {
+  transform: scale(1.02);
 }
 @media (max-width: 480px) {
   .post-gallery-item {

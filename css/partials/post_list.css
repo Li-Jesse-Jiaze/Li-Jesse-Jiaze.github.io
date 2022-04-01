@@ -7,6 +7,7 @@
   flex-wrap: nowrap;
   margin-top: $margin-m-1;
   align-items: top;
+  transition: all 0.2s ease-in-out;
 }
 .post-list-item .post-title {
   flex-grow: 1;
@@ -18,6 +19,9 @@
   text-align: right;
   line-height: $line-height-body;
   color: $color-text-secondary;
+}
+.post-list-item:hover {
+  transform: scale(1.02);
 }
 @media (max-width: 480px) {
   .post-list-item {

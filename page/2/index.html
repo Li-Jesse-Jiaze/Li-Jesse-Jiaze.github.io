@@ -32,6 +32,8 @@
     
     <link rel="stylesheet" href="/css/style.css">
     
+    <link rel="stylesheet" href="/atropos/atropos.css">
+    
 
 
 
@@ -39,6 +41,8 @@
     <!-- scripts list from _config.yml -->
     
     <script src="/js/frame.js"></script>
+    
+    <script src="/atropos/atropos.js"></script>
     
 
 
@@ -131,8 +135,22 @@
           <div class="profile">
     <div class="profile-image">
         
-            <img src="/Dana_w.png" alt="featured_image">
-        
+            <!-- main Atropos container (required), add your custom class here -->
+            <div class="atropos my-atropos">
+                <!-- scale container (required) -->
+                <div class="atropos-scale">
+                    <!-- rotate container (required) -->
+                    <div class="atropos-rotate">
+                        <!-- inner container (required) -->
+                        <div class="atropos-inner">
+                            <!-- put your custom content here -->
+                            <img src="/Dana.png" alt="featured_image"
+                                data-atropos-offset="5" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
     </div>
     <div class="post-content profile-content">
         <div class="profile-title">
@@ -141,19 +159,25 @@
         <div class="profile-body">
             Liwenjian&#39;s blog keeps him alive.
         </div>
-         
-             <div class="profile-link">
-                 ><a target="_blank" rel="noopener" href="https://github.com/Li-Jesse-Jiaze">Github</a>
-             </div>
-         
-             <div class="profile-link">
-                 ><a target="_blank" rel="noopener" href="https://space.bilibili.com/19037738">Bilibili</a>
-             </div>
-         
-             <div class="profile-link">
-                 ><a target="_blank" rel="noopener" href="https://steamcommunity.com/id/li_wenjian/">Steam</a>
-             </div>
-         
+        
+            <div class="profile-link">
+                ><a target="_blank" rel="noopener" href="https://github.com/Li-Jesse-Jiaze">
+                    Github
+                </a>
+            </div>
+            
+            <div class="profile-link">
+                ><a target="_blank" rel="noopener" href="https://space.bilibili.com/19037738">
+                    Bilibili
+                </a>
+            </div>
+            
+            <div class="profile-link">
+                ><a target="_blank" rel="noopener" href="https://steamcommunity.com/id/li_wenjian/">
+                    Steam
+                </a>
+            </div>
+            
     </div>
 
 </div>
@@ -355,6 +379,23 @@
     </div>
 </div>
 
+
+    <script>
+        const myAtropos = Atropos({
+            el: '.my-atropos',
+            activeOffset: 40,
+            shadowScale: 0,
+            onEnter() {
+                console.log('Enter');
+            },
+            onLeave() {
+                console.log('Leave');
+            },
+            onRotate(x, y) {
+                console.log('Rotate', x, y);
+            }
+        });
+    </script>
         </div>
       </div>
       

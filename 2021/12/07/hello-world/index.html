@@ -32,6 +32,8 @@
     
     <link rel="stylesheet" href="/css/style.css">
     
+    <link rel="stylesheet" href="/atropos/atropos.css">
+    
 
 
 
@@ -39,6 +41,8 @@
     <!-- scripts list from _config.yml -->
     
     <script src="/js/frame.js"></script>
+    
+    <script src="/atropos/atropos.js"></script>
     
 
 
@@ -162,9 +166,42 @@
     </div>
 </div>
     <div class="post-content">
-    <script src="/assets/js/DPlayer.min.js"> </script><p>This is my first blog post. For testing.</p>
+    <p>This is my first blog post. For testing.</p>
 <h3 id="code-test">code test</h3>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//Your first C++ code</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<!-- main Atropos container (required), add your custom class here -->
+<div class="atropos my-atropos">
+  <!-- scale container (required) -->
+  <div class="atropos-scale">
+    <!-- rotate container (required) -->
+    <div class="atropos-rotate">
+      <!-- inner container (required) -->
+      <div class="atropos-inner">
+        <!-- put your custom content here -->
+        <img src="https://s2.loli.net/2021/12/06/sC8Firap4LZdz6W.png" data-atropos-offset="10" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const myAtropos = Atropos({
+  el: '.my-atropos',
+  activeOffset: 10,
+  shadowScale: 0,
+  onEnter() {
+    console.log('Enter');
+  },
+  onLeave() {
+    console.log('Leave');
+  },
+  onRotate(x, y) {
+    console.log('Rotate', -x, -y);
+  }
+});
+</script>
+
 
 </div> 
 
