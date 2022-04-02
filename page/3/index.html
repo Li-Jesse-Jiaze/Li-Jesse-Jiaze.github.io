@@ -135,22 +135,17 @@
           <div class="profile">
     <div class="profile-image">
         
-            <!-- main Atropos container (required), add your custom class here -->
-            <div class="atropos my-atropos">
-                <!-- scale container (required) -->
+            <div class="atropos atropos-banner">
                 <div class="atropos-scale">
-                    <!-- rotate container (required) -->
                     <div class="atropos-rotate">
-                        <!-- inner container (required) -->
-                        <div class="atropos-inner">
-                            <!-- put your custom content here -->
-                            <img src="/Dana.png" alt="featured_image"
-                                data-atropos-offset="5" />
+                        <div class="atropos-inner" style="display:grid">
+                            <img data-atropos-offset="0" src="/Dana.png" style="grid-column-start: 1; grid-row-start: 1;">
+                            <img data-atropos-offset="4" src="/Danasg.png" style="grid-column-start: 1; grid-row-start: 1;">
                         </div>
                     </div>
                 </div>
             </div>
-            
+        
     </div>
     <div class="post-content profile-content">
         <div class="profile-title">
@@ -219,19 +214,11 @@
 
 
     <script>
-        const myAtropos = Atropos({
-            el: '.my-atropos',
-            activeOffset: 40,
-            shadowScale: 0,
-            onEnter() {
-                console.log('Enter');
-            },
-            onLeave() {
-                console.log('Leave');
-            },
-            onRotate(x, y) {
-                console.log('Rotate', x, y);
-            }
+        window.atropos = new Atropos({
+        el: document.querySelectorAll('.atropos')[0],
+        activeOffset: 60,
+        shadow: false,
+        highlight: true,
         });
     </script>
         </div>
