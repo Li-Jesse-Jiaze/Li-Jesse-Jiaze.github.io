@@ -281,27 +281,6 @@
 
   
   <url>
-    <loc>http://keep-a.live/tags/Tongji-University/</loc>
-    <lastmod>2022-04-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://keep-a.live/tags/life/</loc>
-    <lastmod>2022-04-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://keep-a.live/tags/photography/</loc>
-    <lastmod>2022-04-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://keep-a.live/tags/football/</loc>
     <lastmod>2022-04-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -324,6 +303,34 @@
   
   <url>
     <loc>http://keep-a.live/tags/games/</loc>
+    <lastmod>2022-04-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://keep-a.live/tags/Hello-World/</loc>
+    <lastmod>2022-04-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://keep-a.live/tags/Tongji-University/</loc>
+    <lastmod>2022-04-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://keep-a.live/tags/life/</loc>
+    <lastmod>2022-04-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://keep-a.live/tags/photography/</loc>
     <lastmod>2022-04-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -492,13 +499,6 @@
   
   <url>
     <loc>http://keep-a.live/tags/van-Gogh/</loc>
-    <lastmod>2022-04-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://keep-a.live/tags/Hello-World/</loc>
     <lastmod>2022-04-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
