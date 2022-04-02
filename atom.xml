@@ -6,7 +6,7 @@
   <link href="http://keep-a.live/atom.xml" rel="self"/>
   
   <link href="http://keep-a.live/"/>
-  <updated>2022-04-01T07:40:28.197Z</updated>
+  <updated>2022-04-02T11:55:27.858Z</updated>
   <id>http://keep-a.live/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Add Friend Link</title>
+    <link href="http://keep-a.live/2022/04/02/Add-Friend-Link/"/>
+    <id>http://keep-a.live/2022/04/02/Add-Friend-Link/</id>
+    <published>2022-04-02T11:51:46.000Z</published>
+    <updated>2022-04-02T11:55:27.858Z</updated>
+    
+    <content type="html"><![CDATA[<p>If you would like to add your <strong>Link</strong> to this site, please leave a message in the comments section below</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;If you would like to add your &lt;strong&gt;Link&lt;/strong&gt; to this site, please leave a message in the comments section below&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+    <category term="Hello World" scheme="http://keep-a.live/tags/Hello-World/"/>
+    
+  </entry>
   
   <entry>
     <title>🍺VA-11 Hall-A全成就指南</title>
@@ -571,38 +594,6 @@
     <category term="Vincent" scheme="http://keep-a.live/tags/Vincent/"/>
     
     <category term="van Gogh" scheme="http://keep-a.live/tags/van-Gogh/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Liwenjian Typora theme</title>
-    <link href="http://keep-a.live/2021/12/07/Liwenjian-Typora-theme/"/>
-    <id>http://keep-a.live/2021/12/07/Liwenjian-Typora-theme/</id>
-    <published>2021-12-07T03:09:24.000Z</published>
-    <updated>2021-12-12T08:23:37.287Z</updated>
-    
-    <content type="html"><![CDATA[<p>I wrote a Typora theme. The project has been released to <a href="https://github.com/Li-Jesse-Jiaze/Liwenjian-Typora-Theme">my Github</a>. Feel free to use it.</p><h2 id="install">🔨Install</h2><ol type="1"><li>Download <a href="https://github.com/Li-Jesse-Jiaze/Liwenjian-Typora-Theme/releases/tag/0.1.0">this</a> zip from Github, extract this file, then you can get the <code>lwj-dark.css</code>, <code>lwj-light.css</code> and <code>liwenjian</code> folder.</li><li>Open typora, click <code>Preference</code> → <code>Apperance</code> → <code>Open Theme Folder</code>.</li><li>Put <code>lwj-dark.css</code>, <code>lwj-light.css</code> and <code>liwenjian</code> folder into the open folder.</li><li>Close Typora totally, reopen Typora and select <code>Theme</code> → <code>lwj-light</code> from the menu bar.</li></ol><h2 id="notes">⚠️Notes</h2><ul><li>Designed and tested on macOS. Not fully tested, but should work for Windows/Linux.</li><li>It is better to install <code>Operator Mono</code> font by yourself first.</li></ul>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;I wrote a Typora theme. The project has been released to &lt;a href=&quot;https://github.com/Li-Jesse-Jiaze/Liwenjian-Typora-Theme&quot;&gt;my Github&lt;/a&gt;</summary>
-      
-    
-    
-    
-    <category term="gallery" scheme="http://keep-a.live/categories/gallery/"/>
-    
-    
-    <category term="theme" scheme="http://keep-a.live/tags/theme/"/>
-    
-    <category term="css" scheme="http://keep-a.live/tags/css/"/>
-    
-    <category term="markdown" scheme="http://keep-a.live/tags/markdown/"/>
-    
-    <category term="Typora" scheme="http://keep-a.live/tags/Typora/"/>
-    
-    <category term="Projects" scheme="http://keep-a.live/tags/Projects/"/>
     
   </entry>
   
