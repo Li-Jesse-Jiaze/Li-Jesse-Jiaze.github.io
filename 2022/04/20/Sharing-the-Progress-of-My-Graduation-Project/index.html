@@ -190,7 +190,37 @@
 <figure>
 <img src="https://s2.loli.net/2022/04/20/qbzYAvWcxmSEhBU.png" alt="MH_05_difficult" /><figcaption aria-hidden="true">MH_05_difficult</figcaption>
 </figure>
-<p>However, we have made significant improvements in reducing the size of the offline maps and in the speed of saving and reading them. For the same dataset, map size was reduced to 1/3 and the time cost of saving and reading was reduced to 1/5.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">APE rmse</th>
+<th style="text-align: center;">APE mean</th>
+<th style="text-align: center;">save time</th>
+<th style="text-align: center;">load time</th>
+<th style="text-align: center;">map size</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">DBoW2</td>
+<td style="text-align: center;">0.1775</td>
+<td style="text-align: center;">0.1623</td>
+<td style="text-align: center;">3.64 s</td>
+<td style="text-align: center;">6.79 s</td>
+<td style="text-align: center;">310 MB</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">hloc</td>
+<td style="text-align: center;">0.1171</td>
+<td style="text-align: center;">0.1043</td>
+<td style="text-align: center;">0.41 s</td>
+<td style="text-align: center;">0.56 s</td>
+<td style="text-align: center;">186 MB</td>
+</tr>
+</tbody>
+</table>
+<p>However, we have made significant improvements in reducing the size of the offline maps and in the speed of saving and reading them.</p>
 <h2 id="todo-list">TODO List</h2>
 <ul class="task-list">
 <li><input type="checkbox" disabled="" checked="" />
